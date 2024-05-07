@@ -1,0 +1,3 @@
+C:/Users/Usuario/Desktop/FATEC/2024_1/ProjetoBanco/aplicacao-back-end/cmake-build-debug/CMakeFiles/aplicacao_back_end.dir
+C:/Users/Usuario/Desktop/FATEC/2024_1/ProjetoBanco/aplicacao-back-end/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Usuario/Desktop/FATEC/2024_1/ProjetoBanco/aplicacao-back-end/cmake-build-debug/CMakeFiles/rebuild_cache.dir
