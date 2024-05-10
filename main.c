@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "controller/API.h"
 
-int main(void) {
-    printf("Hello, World!\n");
+int main() {
+    servidor();
     return 0;
 }
