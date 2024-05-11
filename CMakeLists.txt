@@ -6,12 +6,16 @@ set(CMAKE_C_STANDARD 11)
 include_directories(lib\\libmicrohttpd\\include)
 link_directories(lib\\libmicrohttpd\\lib)
 
-add_executable(aplicacao_back_end main.c
+add_executable(aplicacao_back_end main.c lib/sqlite3.c
         controller/rotas.c
         controller/rotas.h
         controller/API.c
         controller/API.h
         controller/JSON.c
-        controller/JSON.h)
+        controller/JSON.h
+        controller/bd.c
+        controller/bd.h
+)
 
 target_link_libraries(aplicacao_back_end microhttpd ws2_32)
+

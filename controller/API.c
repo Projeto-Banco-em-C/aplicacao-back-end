@@ -48,7 +48,7 @@ static enum MHD_Result ahc_echo(void * cls,
         } else {
 
             page1 = criaRotas(url,post->buff);
-            free(post->buff);
+            //free(post->buff);
         }
     }
 

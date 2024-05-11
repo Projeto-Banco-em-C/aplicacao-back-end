@@ -1,8 +1,17 @@
+#include <stdio.h>
 #include "rotas.h"
 #include <string.h>
+#include "bd.h"
 
 char * end_point_1(char * post_data){ // Não precisa estar nesse arquivo
     //Exemplo
+
+    char query[] = "SELECT * FROM TAB_USUARIO";
+    Linhas retorno = bd(query);
+
+    printf("%s - ",retorno.list_campos[0].campos[0].key);
+    printf("%s",retorno.list_campos[0].campos[0].valor);
+
     return "{\"status\":\"ok\"}";
 }
 
