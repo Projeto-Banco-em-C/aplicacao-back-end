@@ -1,0 +1,2 @@
+
+char * cadastro(char * post);

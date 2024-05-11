@@ -15,6 +15,8 @@ add_executable(aplicacao_back_end main.c lib/sqlite3.c
         controller/JSON.h
         controller/bd.c
         controller/bd.h
+        scripts/cadastro.c
+        scripts/cadastro.h
 )
 
 target_link_libraries(aplicacao_back_end microhttpd ws2_32)
