@@ -4,21 +4,82 @@
 #include <windows.h>
 #include <stdio.h>
 
-char *concatena(char *data1, char *data2) {
-    size_t tamanho_data1 = strlen(data1);
-    size_t tamanho_data2 = strlen(data2);
+/**
+ * Função que remove um caracter especifico de uma string qualquer
+ * @param str String que
+ * @param charToRemove O caracter que será removido
+ * @return Retorna a string sem o caracter
+ */
+void removeChar(char *str, char charToRemove) {
+    char *src = str; // Ponteiro para percorrer a string
+    char *dst = str; // Ponteiro para onde os caracteres devem ser movidos
+
+    while (*src) {
+        if (*src != charToRemove) {
+            *dst = *src;
+            dst++;
+        }
+        src++;
+    }
+    *dst = '\0'; // Termina a string após a remoção
+}
+
+/**
+ * Função que concatena duas strings
+ * @param data1 String será concatenada a esquerda
+ * @param data2 String será concatenada a direita
+ * @return Retorna a string resultante da concatenação
+ */
+char * concatena(char *str1, char *str2) {
+    size_t tamanho_data1 = strlen(str1);
+    size_t tamanho_data2 = strlen(str2);
     size_t tamanho_total = tamanho_data1 + tamanho_data2 + 1; // tamanho das duas strings + '\0'
 
     char *resultado = malloc(tamanho_total);
     if (resultado == NULL) {
-        // Tratamento de erro: falha na alocação de memória
+        // Falha na alocação de memória
         return NULL;
     }
 
-    strcpy(resultado, data1); // Copia a primeira string para o resultado.
-    strcat(resultado, data2); // Concatena a segunda string ao resultado.
+    strcpy(resultado, str1); // Copia a primeira string para o resultado.
+    strcat(resultado, str2); // Concatena a segunda string ao resultado.
 
     return resultado;
+}
+
+/**
+ * Função que gera um JSON apartir de uma variavel do tipo Linhas
+ * @param linhas_json Variavel do tipo linha que será convertida para JSON
+ * @return Retorna a string com formato JSON
+ */
+char * convertJSON(Linhas linhas_json){
+    char * json;
+    if(linhas_json.tamanho == 1){
+        json = "";
+    }else{
+        json = "[";
+    }
+    for (int i = 0; i < linhas_json.tamanho; i++) {
+        json = concatena(json,"{\"");
+        for (int j = 0; j < linhas_json.list_campos[i].tamanho; j++) {
+            json = concatena(json,linhas_json.list_campos[i].campos[j].key);
+            json = concatena(json,"\" : \"");
+            json = concatena(json,linhas_json.list_campos[i].campos[j].valor);
+            json = concatena(json,"\"");
+            if(j < linhas_json.list_campos[i].tamanho-1){
+                json = concatena(json,",");
+            }
+        }
+        json = concatena(json,"}");
+        if(i < linhas_json.tamanho-1){
+            json = concatena(json,",");
+        }
+    }
+    if(linhas_json.tamanho != 1){
+        json = concatena(json,"]");
+    }
+
+    return json;
 }
 
 /**

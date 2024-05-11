@@ -6,13 +6,22 @@
 #include <stdio.h>
 #include "rotas.h"
 
-
+/**
+ * struct de suporte para as funções da API
+ */
 struct postStatus {
     bool status;
     char *buff;
 };
 
-// Funciona
+/**
+ * Função dh que deve ser enviada para a MHD_start_daemon.
+ * Essa função é chamada sempre que uma requisição é feita ao servidor.
+ * Os parametros e o retorno dela devem seguir as regras da bilbioteca
+ * microhttpd.h. </br>
+ * Essa função pega os dados que vieram via post para a API e o envia para
+ * a função criaRotas, onde os dados serão tratados e direcionados.
+ */
 static enum MHD_Result ahc_echo(void * cls,
                                 struct MHD_Connection * connection,
                                 const char * url,
@@ -21,7 +30,7 @@ static enum MHD_Result ahc_echo(void * cls,
                                 const char * upload_data,
                                 size_t * upload_data_size,
                                 void ** ptr) {
-    //const char * page = cls;
+
     struct MHD_Response * response;
     int ret;
 
@@ -46,8 +55,11 @@ static enum MHD_Result ahc_echo(void * cls,
             *upload_data_size = 0;
             return MHD_YES;
         } else {
-
-            page1 = criaRotas(url,post->buff);
+            if(strcmp(method, "POST") == 0){
+                page1 = criaRotas(url, post->buff);
+            } else {
+                page1 = "{\"erro\": \"caminho não encontrado\"}";
+            }
             //free(post->buff);
         }
     }
@@ -66,6 +78,10 @@ static enum MHD_Result ahc_echo(void * cls,
     return ret;
 }
 
+/**
+ * Função responsavel por ligar e desligar o servidor,
+ * ela é a unica função que deve ser executada no main.c
+ */
 void servidor(){
     struct MHD_Daemon * d;
 

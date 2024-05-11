@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "controller/API.h"
 
 int main() {

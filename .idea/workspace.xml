@@ -23,10 +23,12 @@
     <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BancoDeDados.db" beforeDir="false" afterPath="$PROJECT_DIR$/BancoDeDados.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/API.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/API.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/JSON.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/JSON.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/JSON.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/JSON.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/rotas.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/rotas.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/Novo Documento de Texto.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +101,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="aplicacao_back_end" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aplicacao_back_end" TARGET_NAME="aplicacao_back_end" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="aplicacao_back_end" RUN_TARGET_NAME="aplicacao_back_end">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -121,6 +118,8 @@
       <workItem from="1715107654631" duration="1208000" />
       <workItem from="1715368342611" duration="760000" />
       <workItem from="1715384432016" duration="1624000" />
+      <workItem from="1715390611224" duration="2284000" />
+      <workItem from="1715437279206" duration="9315000" />
     </task>
     <servers />
   </component>
