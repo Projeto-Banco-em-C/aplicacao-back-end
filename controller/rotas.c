@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "../scripts/cadastro.h"
 #include "../scripts/validacaoCpf.h"
+#include "../scripts/login.h"
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
     char * query = "SELECT * FROM TAB_USUARIO";
@@ -60,6 +61,8 @@ char * criaRotas(const char * url, char * post_data){
             page1 = end_point_1(post_data); // Esse é um exemplo
         }else if (strcmp(url, "/validacaoCpf") == 0) {
             page1 = validacaoCpf(post_data);
+        }else if (strcmp(url, "/login") == 0) {
+            page1 = login(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }
