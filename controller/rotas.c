@@ -6,6 +6,7 @@
 #include "../scripts/cadastro.h"
 #include "../scripts/validacaoCpf.h"
 #include "../scripts/login.h"
+
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
     char * query = "SELECT * FROM TAB_USUARIO";
