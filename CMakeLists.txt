@@ -21,6 +21,8 @@ add_executable(aplicacao_back_end main.c lib/sqlite3.c
         scripts/pix.h
         scripts/validacaoCpf.c
         scripts/validacaoCpf.h
+        scripts/login.c
+        scripts/login.h
 )
 
 target_link_libraries(aplicacao_back_end microhttpd ws2_32)
