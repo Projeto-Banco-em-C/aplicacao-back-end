@@ -128,6 +128,7 @@ ListCampo convertObj(char *obj) {
         if(ident == NULL){
              valor = '\0';
         }else {
+            valor = (char *) malloc((strlen(ident) + 1) * sizeof(char));
             if (valor == NULL) {
                 printf("Erro ao alocar memória.\n");
                 exit(1);
