@@ -14,13 +14,11 @@ char * dados(char * post){
 
     char * retornoJson = convertJSON(retorno);
 
-    if (retorno.tamanho > 0)
-    {
+    if (retorno.tamanho > 0){
         //return "{\"mensagem\":\"ok\"}";
         return retornoJson;
     }
-    else
-    {
+    else{
         return "{\"mensagem\":\"erro\"}";
     }
 }
