@@ -71,7 +71,7 @@ char * convertJSON(Linhas linhas_json){
             json = concatena(json,linhas_json.list_campos[i].campos[j].valor);
             json = concatena(json,"\"");
             if(j < linhas_json.list_campos[i].tamanho-1){
-                json = concatena(json,",");
+                json = concatena(json,",\"");
             }
         }
         json = concatena(json,"}");
