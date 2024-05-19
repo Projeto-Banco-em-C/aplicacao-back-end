@@ -71,6 +71,14 @@ static enum MHD_Result ahc_echo(void * cls,
     response = MHD_create_response_from_buffer (strlen(page1),
                                                 (void*) page1,
                                                 MHD_RESPMEM_PERSISTENT);
+    
+    // Configurando o cabeçalho Access-Control-Allow-Origin para permitir acesso de todas as origens
+    ret = MHD_add_response_header(response, "Access-Control-Allow-Origin", "*");
+    if (ret != MHD_YES) {
+        MHD_destroy_response(response);
+        return MHD_NO;
+    }
+    
     ret = MHD_queue_response(connection,
                              MHD_HTTP_OK,
                              response);
