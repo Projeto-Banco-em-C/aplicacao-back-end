@@ -20,10 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/login.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/login.c" afterDir="false" />
-    </list>
+    <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +76,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Leonardo",
+    "git-widget-placeholder": "Eduardo",
     "last_opened_file_path": "C:/Users/felip/OneDrive/Documentos/GitHub/aplicacao-back-end",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -100,11 +97,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="aplicacao_back_end" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aplicacao_back_end" TARGET_NAME="aplicacao_back_end" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="aplicacao_back_end" RUN_TARGET_NAME="aplicacao_back_end">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -128,7 +120,7 @@
       <workItem from="1715457992399" duration="3839000" />
       <workItem from="1715535156686" duration="5517000" />
       <workItem from="1715621163150" duration="537000" />
-      <workItem from="1716166055502" duration="1478000" />
+      <workItem from="1716138905049" duration="8000" />
     </task>
     <servers />
   </component>
