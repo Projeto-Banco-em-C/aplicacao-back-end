@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "../controller/bd.h"
 #include <stdlib.h>
-
+// verificar se a salto o sufuciente antes de proceguir
 char * verifica_saldo(char * post) {
 
     ListCampo post_data = convertObj(post);
@@ -27,8 +27,9 @@ char * verifica_saldo(char * post) {
 
 }
 
-
-char * list_hitorico(char * post){
+// Enviar historio para o front-end
+char * list_historico(char * post)
+{
 
 
 
@@ -38,4 +39,29 @@ char * list_hitorico(char * post){
 
 }
 
+// Pegar a chave pix do front_end enviar para o banco de dados
+char * adicionar_chavePix(char * post)
+{
+
+
+
+
+
+
+
+
+}
+
+// Pegar o front_end o valor da transfeferencia remover da conta e acrecentar no outra
+char * transferir_pix(char * post)
+{
+
+
+
+
+
+
+
+
+}
 
