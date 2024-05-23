@@ -6,6 +6,7 @@
 #include "../scripts/cadastro.h"
 #include "../scripts/validacaoCpf.h"
 #include "../scripts/login.h"
+#include "../scripts/pix.h"
 
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
@@ -48,8 +49,6 @@ char * criaRotas(const char * url, char * post_data){
             page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/cadastro") == 0) {
             page1 = cadastro(post_data); // Esse é um exemplo
-        } else if (strcmp(url, "/pix") == 0) {
-            page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/ted") == 0) {
             page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/pagamento") == 0) {
@@ -64,6 +63,12 @@ char * criaRotas(const char * url, char * post_data){
             page1 = validacaoCpf(post_data);
         }else if (strcmp(url, "/login") == 0) {
             page1 = login(post_data);
+        } else if (strcmp(url, "/verifica_saldo") == 0) {
+            page1 = verifica_saldo(post_data);
+        } else if (strcmp(url, "/consulta_info_pix") == 0) {
+            page1 = consulta_info_pix(post_data);
+        } else if (strcmp(url, "/list_historico_pix") == 0) {
+            page1 = list_historico_pix(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }
