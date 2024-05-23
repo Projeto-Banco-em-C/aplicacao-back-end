@@ -44,16 +44,37 @@ char * list_historico_pix(char * post)
 }
 
 // Pegar a chave pix do front_end enviar para o banco de dados
-// Pegar o front_end o valor da transfeferencia remover da conta e acrecentar no outra
 char * adicionar_chave_pix(char * post)
 {
 
+    ListCampo post_data = convertObj(post);
 
+    char * query = "SELECT * FROM TAB_CHAVES_PIX WHERE CHA_CODIGO = \'";
+    query = concatena(query, post_data.campos[1].valor);
+    query = concatena(query, "\'");
+    Linhas retorno = bd(query);
 
+    if(retorno.tamanho > 0)
+    {
 
+        return "{\"mensagem\":\"pix ja existente\"}";
 
+    }
+    else
+    {
 
+        char * query02 = "INSERT INTO TAB_CHAVES_PIX VALUES (";
+        query02 = concatena(query02, post_data.campos[0].valor);
+        query02 = concatena(query02, ",");
+        query02 = concatena(query02, "'");
+        query02 = concatena(query02, post_data.campos[1].valor);
+        query02 = concatena(query02, "'");
+        query02 = concatena(query02, ")");
+        Linhas retorno02 = bd(query02);
 
+        return "{\"mensagem\":\"chave pix adicionada\"}";
+
+    }
 
 }
 
@@ -90,13 +111,9 @@ char * consulta_info_pix(char * post)
 
 }
 
-
+// Pegar o front_end o valor da transfeferencia remover da conta e acrecentar no outra
 char * transferir_pix(char * post)
 {
-
-
-
-
 
 
 
