@@ -126,15 +126,14 @@ char * transferir_pix(char * post)
     char * query = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
     query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
-    double saldo = strtod(retorno.list_campos[0].campos[0].valor, NULL);
-    double valor = strtod(post_data.campos[2].valor, NULL);
+    char * saldo = retorno.list_campos[0].campos[0].valor;
+    char * valor = post_data.campos[2].valor;
 
-    char * saldoAtual;
-
-    sprintf(saldoAtual,"%.2lf",saldo - valor);
 
     char * query02 = "UPDATE TAB_USUARIO SET USU_SALDO = ";
-    query02 = concatena(query02,  saldoAtual);
+    query02 = concatena(query02,  saldo);
+    query02 = concatena(query02,  " - ");
+    query02 = concatena(query02,  valor);
     query02 = concatena(query02,  " WHERE USU_ID = ");
     query02 = concatena(query02,  post_data.campos[0].valor);
 
@@ -145,14 +144,12 @@ char * transferir_pix(char * post)
     char * query03 = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
     query03 = concatena(query03, post_data.campos[1].valor);
     retorno = bd(query03);
-    double saldo02 = strtod(retorno.list_campos[0].campos[0].valor, NULL);
-
-    char * saldoAtual02;
-
-    sprintf(saldoAtual02,"%.2lf",saldo02 + valor);
+    char * saldo02 = retorno.list_campos[0].campos[0].valor;
 
     char * query04 = "UPDATE TAB_USUARIO SET USU_SALDO = ";
-    query04 = concatena(query04,  saldoAtual02);
+    query04 = concatena(query04,  saldo02);
+    query04 = concatena(query04,  " + ");
+    query04 = concatena(query04,  valor);
     query04 = concatena(query04,  " WHERE USU_ID = ");
     query04 = concatena(query04,  post_data.campos[1].valor);
 
@@ -177,7 +174,7 @@ char * transferir_pix(char * post)
     query05 = concatena(query05,post_data.campos[2].valor);
     query05 = concatena(query05,",\'");
     query05 = concatena(query05,data);
-    query05 = concatena(query05,",\'PIX\')");
+    query05 = concatena(query05,"\',\'PIX\')");
 
     retorno = bd(query05);
 
