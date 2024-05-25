@@ -84,7 +84,7 @@ char * consulta_info_pix(char * post)
 
     ListCampo post_data = convertObj(post);
 
-    char * query = "SELECT U.USU_ID, U.USU_NOME FROM TAB_CHAVES_PIX C,TAB_USUARIO U WHERE U.USU_ID = C.USU_ID AND C.CHA_CODIGO = \'";
+    char * query = "SELECT U.USU_ID, U.USU_NOME, U.USU_CPF FROM TAB_CHAVES_PIX C,TAB_USUARIO U WHERE U.USU_ID = C.USU_ID AND C.CHA_CODIGO = \'";
     query = concatena(query, post_data.campos[0].valor);
     query = concatena(query,"\'");
     Linhas retorno = bd(query);
@@ -92,8 +92,12 @@ char * consulta_info_pix(char * post)
     if(retorno.tamanho > 0)
     {
 
-        char * json = "{\"mensagem\":\"ok\",\"USU_NOME\":\"";
+        char * json = "{\"mensagem\":\"ok\",\"USU_ID\":\"";
+        json = concatena(json, retorno.list_campos[0].campos[0].valor);
+        json = concatena(json, "\",\"USU_NOME\":\"");
         json = concatena(json, retorno.list_campos[0].campos[1].valor);
+        json = concatena(json, "\",\"USU_CPF\":\"");
+        json = concatena(json, retorno.list_campos[0].campos[2].valor);
         json = concatena(json, "\"}");
 
         return  json;
@@ -115,7 +119,9 @@ char * consulta_info_pix(char * post)
 char * transferir_pix(char * post)
 {
 
+    ListCampo post_data = convertObj(post);
 
+    char * query = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
 
 
 }
