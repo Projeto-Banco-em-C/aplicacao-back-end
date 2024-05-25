@@ -6,6 +6,7 @@
 #include "../scripts/cadastro.h"
 #include "../scripts/validacaoCpf.h"
 #include "../scripts/login.h"
+#include "../scripts/ted.h"
 
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
@@ -64,6 +65,10 @@ char * criaRotas(const char * url, char * post_data){
             page1 = validacaoCpf(post_data);
         }else if (strcmp(url, "/login") == 0) {
             page1 = login(post_data);
+        } else if (strcmp(url, "/consulta_info_conta") == 0) {
+            page1 = consulta_info_conta(post_data);
+        } else if (strcmp(url, "/transferir_ted") == 0) {
+            page1 = transferir_ted(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }
