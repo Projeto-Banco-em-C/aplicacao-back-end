@@ -20,11 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/rotas.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/rotas.c" afterDir="false" />
-    </list>
+    <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,26 +67,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< Updated upstream
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "CMake Application.aplicacao_back_end.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/felip/OneDrive/Documentos/GitHub/aplicacao-back-end",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
-=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;CMake Application.aplicacao_back_end.executor&quot;: &quot;Run&quot;,
@@ -109,7 +85,6 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
->>>>>>> Stashed changes
   }
 }</component>
   <component name="RecentsManager">
@@ -122,11 +97,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="aplicacao_back_end" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aplicacao_back_end" TARGET_NAME="aplicacao_back_end" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="aplicacao_back_end" RUN_TARGET_NAME="aplicacao_back_end">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -150,11 +120,8 @@
       <workItem from="1715457992399" duration="3839000" />
       <workItem from="1715535156686" duration="5517000" />
       <workItem from="1715621163150" duration="537000" />
-<<<<<<< Updated upstream
-=======
       <workItem from="1716138905049" duration="8000" />
       <workItem from="1716408161638" duration="724000" />
->>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -170,15 +137,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-<<<<<<< Updated upstream
-          <url>file://$PROJECT_DIR$/scripts/pix.c</url>
-          <line>7</line>
-          <option name="timeStamp" value="3" />
-=======
           <url>file://$PROJECT_DIR$/scripts/login.c</url>
           <line>10</line>
           <option name="timeStamp" value="5" />
->>>>>>> Stashed changes
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/scripts/login.c</url>
+          <line>10</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

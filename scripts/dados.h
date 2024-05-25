@@ -1,0 +1,1 @@
+char * dados(char * post);
