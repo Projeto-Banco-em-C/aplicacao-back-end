@@ -39,9 +39,17 @@ char * list_historico_pix(char * post)
     query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
 
-    char * json = convertJSON(retorno);
+    if(retorno.tamanho > 0)
+    {
+        char * json = convertJSON(retorno);
+        return json;
+    }
+    else
+    {
+        return "{\"mensagem\":\"erro\"}";
+    }
 
-    return json;
+
 
 }
 
