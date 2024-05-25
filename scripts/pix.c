@@ -123,6 +123,14 @@ char * transferir_pix(char * post)
 
     ListCampo post_data = convertObj(post);
 
+    time_t agora;
+    time(&agora);
+
+    struct tm * data_hora = localtime(&agora);
+
+    char * data;
+    sprintf(data, "%02d/%02d/%04d", data_hora->tm_mday, data_hora->tm_mon + 1, data_hora->tm_year + 1900);
+
     char * query = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
     query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
@@ -156,15 +164,6 @@ char * transferir_pix(char * post)
     retorno = bd(query04);
 
     //--------------------------------
-
-    time_t agora;
-    time(&agora);
-
-    struct tm * data_hora = localtime(&agora);
-
-    char * data;
-    sprintf(data, "%02d/%02d/%04d", data_hora->tm_mday, data_hora->tm_mon + 1, data_hora->tm_year + 1900);
-
 
     char * query05 = "INSERT INTO TAB_TRANSACOES (USU_ID_ORIGEM,USU_ID_DESTINO,TRAN_VALOR,TRAN_DATA,TRAN_TIPO) VALUES (";
     query05 = concatena(query05,post_data.campos[0].valor);
