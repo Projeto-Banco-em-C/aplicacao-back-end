@@ -91,8 +91,8 @@ char * adicionar_chave_pix(char * post)
 //consultar informaçoes do pix
 char * consulta_info_pix(char * post)
 {
-
     ListCampo post_data = convertObj(post);
+
 
     char * query = "SELECT U.USU_ID, U.USU_NOME, U.USU_CPF FROM TAB_CHAVES_PIX C,TAB_USUARIO U WHERE U.USU_ID = C.USU_ID AND C.CHA_CODIGO = \'";
     query = concatena(query, post_data.campos[0].valor);
