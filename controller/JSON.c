@@ -32,19 +32,23 @@ void removeChar(char *str, char charToRemove) {
  */
 char * concatena(char *str1, char *str2) {
     size_t tamanho_data1 = strlen(str1);
-    size_t tamanho_data2 = strlen(str2);
-    size_t tamanho_total = tamanho_data1 + tamanho_data2 + 1; // tamanho das duas strings + '\0'
-
-    char *resultado = malloc(tamanho_total);
-    if (resultado == NULL) {
-        // Falha na alocação de memória
-        return NULL;
+    if(str2 != NULL) {
+        size_t tamanho_data2 = strlen(str2);
+        size_t tamanho_total = tamanho_data1 + tamanho_data2 + 1; // tamanho das duas strings + '\0'
+    
+        char *resultado = malloc(tamanho_total);
+        if (resultado == NULL) {
+            // Falha na alocação de memória
+            return NULL;
+        }
+    
+        strcpy(resultado, str1); // Copia a primeira string para o resultado.
+        strcat(resultado, str2); // Concatena a segunda string ao resultado.
+    
+        return resultado;
+    }else{
+        return str1;
     }
-
-    strcpy(resultado, str1); // Copia a primeira string para o resultado.
-    strcat(resultado, str2); // Concatena a segunda string ao resultado.
-
-    return resultado;
 }
 
 /**
@@ -67,7 +71,7 @@ char * convertJSON(Linhas linhas_json){
             json = concatena(json,linhas_json.list_campos[i].campos[j].valor);
             json = concatena(json,"\"");
             if(j < linhas_json.list_campos[i].tamanho-1){
-                json = concatena(json,",");
+                json = concatena(json,",\"");
             }
         }
         json = concatena(json,"}");
@@ -120,12 +124,17 @@ ListCampo convertObj(char *obj) {
         ident = strtok(NULL, ",:{}");
 
         // Aloca memória dinamicamente para o valor
-        char *valor = (char *)malloc((strlen(ident) + 1) * sizeof(char));
-        if (valor == NULL) {
-            printf("Erro ao alocar memória.\n");
-            exit(1);
+        char * valor;
+        if(ident == NULL){
+             valor = '\0';
+        }else {
+            valor = (char *) malloc((strlen(ident) + 1) * sizeof(char));
+            if (valor == NULL) {
+                printf("Erro ao alocar memória.\n");
+                exit(1);
+            }
+            strcpy(valor, ident); // Copia o valor para a memória alocada
         }
-        strcpy(valor, ident); // Copia o valor para a memória alocada
 
         list_campos.tamanho++;
 
