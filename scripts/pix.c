@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "../controller/bd.h"
 #include <stdlib.h>
+#include <time.h>
+
 // verificar se a salto o sufuciente antes de proceguir
 char * verifica_saldo(char * post) {
 
@@ -122,7 +124,64 @@ char * transferir_pix(char * post)
     ListCampo post_data = convertObj(post);
 
     char * query = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
+    query = concatena(query, post_data.campos[0].valor);
+    Linhas retorno = bd(query);
+    double saldo = strtod(retorno.list_campos[0].campos[0].valor, NULL);
+    double valor = strtod(post_data.campos[2].valor, NULL);
 
+    char * saldoAtual;
+
+    sprintf(saldoAtual,"%.2lf",saldo - valor);
+
+    char * query02 = "UPDATE TAB_USUARIO SET USU_SALDO = ";
+    query02 = concatena(query02,  saldoAtual);
+    query02 = concatena(query02,  " WHERE USU_ID = ");
+    query02 = concatena(query02,  post_data.campos[0].valor);
+
+    retorno = bd(query02);
+
+    //-------------------------------------------
+
+    char * query03 = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
+    query03 = concatena(query03, post_data.campos[1].valor);
+    retorno = bd(query03);
+    double saldo02 = strtod(retorno.list_campos[0].campos[0].valor, NULL);
+
+    char * saldoAtual02;
+
+    sprintf(saldoAtual02,"%.2lf",saldo02 + valor);
+
+    char * query04 = "UPDATE TAB_USUARIO SET USU_SALDO = ";
+    query04 = concatena(query04,  saldoAtual02);
+    query04 = concatena(query04,  " WHERE USU_ID = ");
+    query04 = concatena(query04,  post_data.campos[1].valor);
+
+    retorno = bd(query04);
+
+    //--------------------------------
+
+    time_t agora;
+    time(&agora);
+
+    struct tm * data_hora = localtime(&agora);
+
+    char * data;
+    sprintf(data, "%02d/%02d/%04d", data_hora->tm_mday, data_hora->tm_mon + 1, data_hora->tm_year + 1900);
+
+
+    char * query05 = "INSERT INTO TAB_TRANSACOES (USU_ID_ORIGEM,USU_ID_DESTINO,TRAN_VALOR,TRAN_DATA,TRAN_TIPO) VALUES (";
+    query05 = concatena(query05,post_data.campos[0].valor);
+    query05 = concatena(query05,",");
+    query05 = concatena(query05,post_data.campos[1].valor);
+    query05 = concatena(query05,",");
+    query05 = concatena(query05,post_data.campos[2].valor);
+    query05 = concatena(query05,",\'");
+    query05 = concatena(query05,data);
+    query05 = concatena(query05,",\'PIX\')");
+
+    retorno = bd(query05);
+
+    return "{\"mensagem\":\"ok\"}";
 
 }
 
