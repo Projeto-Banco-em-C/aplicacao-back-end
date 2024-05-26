@@ -1,0 +1,1 @@
+char * extrato (char * post);
