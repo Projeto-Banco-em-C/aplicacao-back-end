@@ -31,31 +31,36 @@ char * extrato (char * post)
     query = concatena(query,post_data.campos[0].valor);
     query = concatena(query,") AND U1.USU_ID = T.USU_ID_ORIGEM AND U2.USU_ID = T.USU_ID_DESTINO");
     Linhas retorno = bd(query);
-    char * json = "[";
-    for (int i = 0; i< retorno.tamanho;i++)
-    {
-        json = concatena (json,"{\"TIPO\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[5].valor);
-        json = concatena(json,"\",\"DATA\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[4].valor);
-        json = concatena(json,"\",\"VALOR\":\"");
-        if(strcmp(post_data.campos[0].valor,retorno.list_campos[i].campos[1].valor) == 0) // Se o id for igual ao id de origem
+    if(retorno.tamanho > 0){
+        char * json = "[";
+        for (int i = 0; i< retorno.tamanho;i++)
         {
-            json = concatena(json,"-");
-            json = concatena(json,retorno.list_campos[i].campos[3].valor);
-            json = concatena(json,"\",\"NOME\":\"");
-            json = concatena(json,retorno.list_campos[i].campos[7].valor);
-        }else{
-            json = concatena(json,retorno.list_campos[i].campos[3].valor);
-            json = concatena(json,"\",\"NOME\":\"");
-            json = concatena(json,retorno.list_campos[i].campos[6].valor);
+            json = concatena (json,"{\"TIPO\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[5].valor);
+            json = concatena(json,"\",\"DATA\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[4].valor);
+            json = concatena(json,"\",\"VALOR\":\"");
+            if(strcmp(post_data.campos[0].valor,retorno.list_campos[i].campos[1].valor) == 0) // Se o id for igual ao id de origem
+            {
+                json = concatena(json,"-");
+                json = concatena(json,retorno.list_campos[i].campos[3].valor);
+                json = concatena(json,"\",\"NOME\":\"");
+                json = concatena(json,retorno.list_campos[i].campos[7].valor);
+            }else{
+                json = concatena(json,retorno.list_campos[i].campos[3].valor);
+                json = concatena(json,"\",\"NOME\":\"");
+                json = concatena(json,retorno.list_campos[i].campos[6].valor);
+            }
+    
+            json = concatena(json, "\"}");
+            if (i != retorno.tamanho - 1)
+            {
+                json = concatena(json, ",");
+            }
         }
-
-        json = concatena(json, "\"}");
-        if (i != retorno.tamanho - 1)
-        {
-            json = concatena(json, ",");
-        }
+        json = concatena(json, "]");
+        return json;
+    }else{
+        return "{\"mensagem\":\"erro\"}";
     }
-    json = concatena(json, "]");
 }
