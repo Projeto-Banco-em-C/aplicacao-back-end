@@ -9,6 +9,7 @@
 #include "../scripts/ted.h"
 #include "../scripts/pix.h"
 #include "../scripts/dados.h"
+#include "../scripts/extrato.h"
 
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
@@ -56,7 +57,7 @@ char * criaRotas(const char * url, char * post_data){
         } else if (strcmp(url, "/pagamento") == 0) {
             page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/extrato") == 0) {
-            page1 = end_point_1(post_data); // Esse é um exemplo
+            page1 = extrato(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/investimento") == 0) {
             page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/emprestimo") == 0) {
