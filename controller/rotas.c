@@ -81,6 +81,8 @@ char * criaRotas(const char * url, char * post_data){
             page1 = dados(post_data);
         } else if (strcmp(url, "/adicionar_contato_pix") == 0) {
             page1 = adicionar_contato_pix(post_data);
+        }else if (strcmp(url, "/lista_chave_pix") == 0) {
+            page1 = lista_chave_pix(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }
