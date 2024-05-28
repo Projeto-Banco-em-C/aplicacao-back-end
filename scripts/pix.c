@@ -139,3 +139,25 @@ char * adicionar_contato_pix(char * post)
 
 }
 
+char * lista_chave_pix(char * post)
+{
+    //char * query = "SELECT * FROM TAB_CONTATOS_PIX WHERE USU_ID = ";
+    ListCampo post_data = convertObj(post);
+
+    char * query = "SELECT * FROM TAB_CHAVES_PIX WHERE USU_ID = ";
+    query = concatena(query, post_data.campos[0].valor);
+    Linhas retorno = bd(query);
+
+    if(retorno.tamanho > 0)
+    {
+        char * json = convertJSON(retorno);
+        return json;
+    }
+    else
+    {
+        return "{\"mensagem\":\"erro\"}";
+    }
+
+
+}
+
