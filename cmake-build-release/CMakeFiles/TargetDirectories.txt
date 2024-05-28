@@ -1,3 +1,0 @@
-C:/Users/JoaoV/Documents/GitHub/aplicacao-back-end/cmake-build-release/CMakeFiles/aplicacao_back_end.dir
-C:/Users/JoaoV/Documents/GitHub/aplicacao-back-end/cmake-build-release/CMakeFiles/edit_cache.dir
-C:/Users/JoaoV/Documents/GitHub/aplicacao-back-end/cmake-build-release/CMakeFiles/rebuild_cache.dir
