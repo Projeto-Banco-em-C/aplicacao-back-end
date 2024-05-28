@@ -21,16 +21,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/transferencia.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/transferencia.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BancoDeDados.db" beforeDir="false" afterPath="$PROJECT_DIR$/BancoDeDados.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/rotas.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/rotas.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/pix.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pix.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/pix.h" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pix.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ted.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ted.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ted.h" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ted.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +133,7 @@
       <workItem from="1716658277053" duration="317000" />
       <workItem from="1716669237616" duration="4891000" />
       <workItem from="1716841817934" duration="686000" />
-      <workItem from="1716921912244" duration="917000" />
+      <workItem from="1716921912244" duration="1617000" />
     </task>
     <servers />
   </component>
