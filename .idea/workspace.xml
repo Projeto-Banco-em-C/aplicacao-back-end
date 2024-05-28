@@ -17,13 +17,11 @@
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
-      <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9555613f-f8fc-4793-9a16-c8914f2e15e4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/pix.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pix.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,8 +127,8 @@
       <workItem from="1716408161638" duration="724000" />
       <workItem from="1716658277053" duration="317000" />
       <workItem from="1716669237616" duration="4891000" />
-      <workItem from="1716842734055" duration="2162000" />
-      <workItem from="1716925143765" duration="2152000" />
+      <workItem from="1716841817934" duration="686000" />
+      <workItem from="1716921912244" duration="1617000" />
     </task>
     <servers />
   </component>

@@ -9,6 +9,8 @@
 #include "../scripts/ted.h"
 #include "../scripts/pix.h"
 #include "../scripts/dados.h"
+#include "../scripts/extrato.h"
+#include "../scripts/transferencia.h"
 
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
@@ -56,7 +58,7 @@ char * criaRotas(const char * url, char * post_data){
         } else if (strcmp(url, "/pagamento") == 0) {
             page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/extrato") == 0) {
-            page1 = end_point_1(post_data); // Esse é um exemplo
+            page1 = extrato(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/investimento") == 0) {
             page1 = end_point_1(post_data); // Esse é um exemplo
         } else if (strcmp(url, "/emprestimo") == 0) {
@@ -65,8 +67,8 @@ char * criaRotas(const char * url, char * post_data){
             page1 = validacaoCpf(post_data);
         } else if (strcmp(url, "/consulta_info_conta") == 0) {
             page1 = consulta_info_conta(post_data);
-        } else if (strcmp(url, "/transferir_ted") == 0) {
-            page1 = transferir_ted(post_data);
+        } else if (strcmp(url, "/transferir") == 0) {
+            page1 = transferir(post_data);
         } else if (strcmp(url, "/verifica_saldo") == 0) {
             page1 = verifica_saldo(post_data);
         } else if (strcmp(url, "/consulta_info_pix") == 0) {
@@ -75,8 +77,6 @@ char * criaRotas(const char * url, char * post_data){
             page1 = list_historico_pix(post_data);
         } else if (strcmp(url, "/adicionar_chave_pix") == 0) {
             page1 = adicionar_chave_pix(post_data);
-        }else if (strcmp(url, "/transferir_pix") == 0) {
-            page1 = transferir_pix(post_data);
         } else if (strcmp(url, "/dados") == 0) {
             page1 = dados(post_data);
         } else if (strcmp(url, "/adicionar_contato_pix") == 0) {
