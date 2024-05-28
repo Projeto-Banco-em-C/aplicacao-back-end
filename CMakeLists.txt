@@ -29,6 +29,8 @@ add_executable(aplicacao_back_end main.c lib/sqlite3.c
         scripts/extrato.h
         scripts/ted.c
         scripts/ted.h
+        scripts/transferencia.c
+        scripts/transferencia.h
 )
 
 target_link_libraries(aplicacao_back_end microhttpd ws2_32)

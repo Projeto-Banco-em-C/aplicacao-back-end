@@ -1,0 +1,1 @@
+char * transferir(char * post);
