@@ -11,6 +11,8 @@
 #include "../scripts/dados.h"
 #include "../scripts/extrato.h"
 #include "../scripts/transferencia.h"
+#include "../scripts/emprestimo.h"
+
 
 char * end_point_1(char * post){ // Não precisa estar nesse arquivo
     //Exemplo
@@ -83,6 +85,8 @@ char * criaRotas(const char * url, char * post_data){
             page1 = adicionar_contato_pix(post_data);
         }else if (strcmp(url, "/lista_chave_pix") == 0) {
             page1 = lista_chave_pix(post_data);
+        }else if (strcmp(url, "/adicionar_emprestimo") == 0) {
+            page1 = adicionar_emprestimo(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }
