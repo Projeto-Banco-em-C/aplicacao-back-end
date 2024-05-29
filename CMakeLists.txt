@@ -31,6 +31,8 @@ add_executable(aplicacao_back_end main.c lib/sqlite3.c
         scripts/ted.h
         scripts/transferencia.c
         scripts/transferencia.h
+        scripts/emprestimo.c
+        scripts/emprestimo.h
         scripts/investimento.c
         scripts/investimento.h
 )

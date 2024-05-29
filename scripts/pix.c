@@ -1,9 +1,9 @@
-
 #include "pix.h"
 #include <stdio.h>
 #include "../controller/bd.h"
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 // verificar se a salto o sufuciente antes de proceguir
 char * verifica_saldo(char * post) {
@@ -125,23 +125,43 @@ char * adicionar_contato_pix(char * post)
 
     ListCampo post_data = convertObj(post);
 
-    char * query = "INSERT INTO TAB_CONTATOS_PIX (USU_ID, CON_CHAVE, CON_NOME) VALUES (";
-    query = concatena(query, post_data.campos[0].valor);
-    query = concatena(query, ",\'");
+    char * query = "SELECT * FROM TAB_CONTATOS_PIX WHERE CON_CHAVE = \'";
     query = concatena(query, post_data.campos[1].valor);
-    query = concatena(query, "\',\'");
-    query = concatena(query, post_data.campos[2].valor);
-    query = concatena(query, "\')");
-
+    query = concatena(query, "\' AND USU_ID = ");
+    query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
 
-    return  "{\"mensagem\":\"contato cadastrado\"}";
+    if(retorno.tamanho > 0){
+        return "{\"mensagem\":\"contato já existente\"}";
+    }else {
+
+        char * query1 = "SELECT USU_ID FROM TAB_CHAVES_PIX WHERE CHA_CODIGO = \'";
+        query1 = concatena(query1, post_data.campos[1].valor);
+        query1 = concatena(query1, "\'");
+        retorno = bd(query1);
+
+        if(strcmp(retorno.list_campos[0].campos[0].valor,post_data.campos[0].valor) != 0) {
+            char *query2 = "INSERT INTO TAB_CONTATOS_PIX (USU_ID, CON_CHAVE, CON_NOME) VALUES (";
+            query2 = concatena(query2, post_data.campos[0].valor);
+            query2 = concatena(query2, ",\'");
+            query2 = concatena(query2, post_data.campos[1].valor);
+            query2 = concatena(query2, "\',\'");
+            query2 = concatena(query2, post_data.campos[2].valor);
+            query2 = concatena(query2, "\')");
+
+            retorno = bd(query2);
+
+            return "{\"mensagem\":\"contato cadastrado\"}";
+        }else{
+            return "{\"mensagem\":\"erro de adição a si proprio\"}";
+        }
+    }
+
 
 }
 
 char * lista_chave_pix(char * post)
 {
-    //char * query = "SELECT * FROM TAB_CONTATOS_PIX WHERE USU_ID = ";
     ListCampo post_data = convertObj(post);
 
     char * query = "SELECT * FROM TAB_CHAVES_PIX WHERE USU_ID = ";
