@@ -1,0 +1,1 @@
+char * investimento (char * post);
