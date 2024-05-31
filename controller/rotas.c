@@ -55,17 +55,13 @@ char * criaRotas(const char * url, char * post_data){
         if (strcmp(url, "/login") == 0) { // Cada end point tem um if
             page1 = login(post_data);
         } else if (strcmp(url, "/cadastro") == 0) {
-            page1 = cadastro(post_data); // Esse é um exemplo
-        } else if (strcmp(url, "/ted") == 0) {
-            page1 = end_point_1(post_data); // Esse é um exemplo
-        } else if (strcmp(url, "/pagamento") == 0) {
-            page1 = end_point_1(post_data); // Esse é um exemplo
+            page1 = cadastro(post_data);
         } else if (strcmp(url, "/extrato") == 0) {
-            page1 = extrato(post_data); // Esse é um exemplo
+            page1 = extrato(post_data);
         } else if (strcmp(url, "/investimento") == 0) {
-            page1 = investimento(post_data); // Esse é um exemplo
-        } else if (strcmp(url, "/emprestimo") == 0) {
-            page1 = end_point_1(post_data); // Esse é um exemplo
+            page1 = investimento(post_data);
+        } else if (strcmp(url, "/atualiza_emprestimo") == 0) {
+            page1 = atualiza_emprestimo(post_data);
         } else if (strcmp(url, "/validacaoCpf") == 0) {
             page1 = validacaoCpf(post_data);
         } else if (strcmp(url, "/consulta_info_conta") == 0) {

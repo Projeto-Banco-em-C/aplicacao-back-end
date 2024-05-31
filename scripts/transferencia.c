@@ -17,15 +17,17 @@
  */
 char * transferir(char * post){
 
-    ListCampo post_data = convertObj(post);
-
     time_t agora;
     time(&agora);
 
     struct tm * data_hora = localtime(&agora);
 
-    char * data;
+    char data[11];
     sprintf(data, "%02d/%02d/%04d", data_hora->tm_mday, data_hora->tm_mon + 1, data_hora->tm_year + 1900);
+
+
+    ListCampo post_data = convertObj(post);
+
     if(strcmp(post_data.campos[0].valor,post_data.campos[1].valor) != 0){
         // Retira o saldo do remetente
         char * query = "UPDATE TAB_USUARIO SET USU_SALDO = USU_SALDO - ";
