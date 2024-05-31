@@ -60,6 +60,8 @@ char * criaRotas(const char * url, char * post_data){
             page1 = extrato(post_data);
         } else if (strcmp(url, "/investimento") == 0) {
             page1 = investimento(post_data);
+        } else if (strcmp(url, "/mostrarInvestimento") == 0) {
+            page1 = mostrarInvestimento(post_data);
         } else if (strcmp(url, "/atualiza_emprestimo") == 0) {
             page1 = atualiza_emprestimo(post_data);
         } else if (strcmp(url, "/validacaoCpf") == 0) {
