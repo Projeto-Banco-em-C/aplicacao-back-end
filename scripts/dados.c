@@ -3,6 +3,14 @@
 #include <string.h>
 #include "../controller/bd.h"
 
+/**
+ * Pega todos dados do usuario na TAB_USUARIO
+ * @param post é uma string no formato json com a seguinte informação:
+ * <ul>
+ *      <li>USU_ID: id do usuario </li>
+ * </ul>
+ * @return Um json com todos os dados da TAB_USUARIO do usuario como USU_ID fornecido
+ */
 char * dados(char * post){
     ListCampo post_data = convertObj( post);
 
@@ -15,7 +23,6 @@ char * dados(char * post){
     char * retornoJson = convertJSON(retorno);
 
     if (retorno.tamanho > 0){
-        //return "{\"mensagem\":\"ok\"}";
         return retornoJson;
     }
     else{
