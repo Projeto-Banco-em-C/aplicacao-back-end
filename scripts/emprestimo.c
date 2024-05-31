@@ -22,12 +22,19 @@ char * adicionar_emprestimo(char * post)
 
     Linhas retorno = bd(query);
 
-    char * query02 = "UPDATE TAB_USUARIO SET USU_LIM_EMPRESTIMO = USU_LIM_EMPRESTIMO + ";
+    char * query02 = "UPDATE TAB_USUARIO SET USU_LIM_EMPRESTIMO = USU_LIM_EMPRESTIMO - ";
     query02 = concatena(query02, post_data.campos[1].valor);
     query02 = concatena(query02, " WHERE USU_ID = ");
     query02 = concatena(query02, post_data.campos[0].valor);
     retorno = bd(query02);
     
+
+    char * query03 = "UPDATE TAB_USUARIO SET USU_SALDO = USU_SALDO + ";
+    query03 = concatena(query03, post_data.campos[1].valor);
+    query03 = concatena(query03, " WHERE USU_ID = ");
+    query03 = concatena(query03, post_data.campos[0].valor);
+    retorno = bd(query03);
+
 
     return  "{\"mensagem\":\"emprestimo cadastrado\"}";
 
