@@ -60,11 +60,17 @@ char * atualiza_emprestimo(char * post){
     ListCampo post_data = convertObj(post);
 
     // Atualiza todos que tem saldo negativo
-    char * query = "UPDATE TAB_USUARIO SET USU_SALDO = ROUND(USU_SALDO*1.0027,2), USU_COBRADO = ";
-    query = concatena(query,post_data.campos[0].valor);
-    query = concatena(query," WHERE USU_SALDO < 0 AND USU_COBRADO <> ");
+    char * query = "SELECT  ROUND(USU_SALDO*0.0027,2) AS VALOR, USU_ID FROM TAB_USUARIO WHERE USU_SALDO < 0 AND USU_COBRADO <>";
     query = concatena(query,post_data.campos[0].valor);
     Linhas retorno = bd(query);
+    for (int i = 0; i < retorno.tamanho; i++) {
+        char * json = "{USU_ID:";
+        json = concatena(json,retorno.list_campos[i].campos[0].valor);
+        json = concatena(json,"USU_ID:1,VALOR:");
+        json = concatena(json,retorno.list_campos[i].campos[1].valor);
+        json = concatena(json, "TIPO:EMPRESTIMO}");
+        char * retornoJson = transferir(json);
+    }
 
     char * query4 = "UPDATE TAB_USUARIO SET USU_COBRADO = ";
     query4 = concatena(query4,post_data.campos[0].valor);
