@@ -102,11 +102,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="aplicacao_back_end" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aplicacao_back_end" TARGET_NAME="aplicacao_back_end" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="aplicacao_back_end" RUN_TARGET_NAME="aplicacao_back_end">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -139,6 +134,7 @@
       <workItem from="1716930064295" duration="2224000" />
       <workItem from="1716942286917" duration="1938000" />
       <workItem from="1717195830483" duration="4266000" />
+      <workItem from="1717206099591" duration="1042000" />
     </task>
     <servers />
   </component>

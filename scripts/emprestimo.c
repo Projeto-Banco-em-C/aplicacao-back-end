@@ -35,7 +35,18 @@ char * adicionar_emprestimo(char * post)
     query03 = concatena(query03, post_data.campos[0].valor);
     retorno = bd(query03);
 
-    char * query04 = "SELECT "
+
+
+    return  "{\"mensagem\":\"emprestimo cadastrado\"}";
+
+}
+
+char * lista_emprestimo(char * post)
+{
+
+    ListCampo post_data = convertObj(post);
+
+    char * query = "SELECT "
                    "USU_ID,"
                    "EMP_VALOR_TOTAL,"
                    "EMP_VALOR_PAGO,"
@@ -47,34 +58,42 @@ char * adicionar_emprestimo(char * post)
                    "TAB_EMPRESTIMO "
                    "WHERE "
                    "(USU_ID = ";
-    query04  = concatena(query04,post_data.campos[0].valor);
-    query04 = concatena(query04,")");
-    retorno = bd(query04);
-    char * json = "[";
-    for (int i = 0; i< retorno.tamanho;i++)
+    query  = concatena(query,post_data.campos[0].valor);
+    query = concatena(query,")");
+    Linhas retorno = bd(query);
+    if(retorno.tamanho > 0)
     {
+        char * json = "[";
+        for (int i = 0; i< retorno.tamanho;i++)
+        {
 
-        json = concatena (json,"{\"USU_ID\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[0].valor);
-        json = concatena(json,"\",\"EMP_VALOR_TOTAL\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[1].valor);
-        json = concatena(json,"\",\"EMP_VALOR_PAGO\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[2].valor);
-        json = concatena(json,"\",\"EMP_NUM_PARCELAS\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[3].valor);
-        json = concatena(json,"\",\"EMP_JURUS_MENSAL\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[4].valor);
-        json = concatena(json,"\",\"EMP_DATA_INICIO\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[5].valor);
-        json = concatena(json,"\",\"T.EMP_COBRADO\":\"");
-        json = concatena(json,retorno.list_campos[i].campos[6].valor);
-        json = concatena(json, "\"}");
+            json = concatena (json,"{\"USU_ID\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[0].valor);
+            json = concatena(json,"\",\"EMP_VALOR_TOTAL\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[1].valor);
+            json = concatena(json,"\",\"EMP_VALOR_PAGO\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[2].valor);
+            json = concatena(json,"\",\"EMP_NUM_PARCELAS\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[3].valor);
+            json = concatena(json,"\",\"EMP_JURUS_MENSAL\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[4].valor);
+            json = concatena(json,"\",\"EMP_DATA_INICIO\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[5].valor);
+            json = concatena(json,"\",\"T.EMP_COBRADO\":\"");
+            json = concatena(json,retorno.list_campos[i].campos[6].valor);
+            json = concatena(json, "\"}");
+
+        }
+        json = concatena(json, "]");
+
+        return json;
 
     }
-    json = concatena(json, "]");
+    else
+    {
+        return  "{\"mensagem\":\"nao possui emprestimos\"}";
+    }
 
-    return json;
 
-    //return  "{\"mensagem\":\"emprestimo cadastrado\"}";
 
 }

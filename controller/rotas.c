@@ -88,6 +88,8 @@ char * criaRotas(const char * url, char * post_data){
             page1 = lista_chave_pix(post_data);
         }else if (strcmp(url, "/adicionar_emprestimo") == 0) {
             page1 = adicionar_emprestimo(post_data);
+        }else if (strcmp(url, "/lista_emprestimo") == 0) {
+            page1 = lista_emprestimo(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }
