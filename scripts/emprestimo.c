@@ -86,9 +86,9 @@ char * atualiza_emprestimo(char * post){
     for (int i = 0; i < retorno.tamanho; i++) {
         char * json = "{USU_ID:";
         json = concatena(json,retorno.list_campos[i].campos[0].valor);
-        json = concatena(json,"USU_ID:1,VALOR:");
+        json = concatena(json,",USU_ID:1,VALOR:");
         json = concatena(json,retorno.list_campos[i].campos[1].valor);
-        json = concatena(json, "TIPO:EMPRESTIMO}");
+        json = concatena(json,",TIPO:EMPRESTIMO}");
         char * retornoJson = transferir(json);
     }
 
@@ -128,7 +128,7 @@ char * atualiza_emprestimo(char * post){
         }
     } else{
         // Atualiza a data no caso de não ser dia 15
-        char * query3 = "UPDATE TAB_EMPRESTIMO SET EMP_VALOR_PAGO = (EMP_VALOR_PAGO + EMP_VALOR_TOTAL/EMP_NUM_PARCELAS), EMP_NUM_PARCELAS_PAGAS = EMP_NUM_PARCELAS_PAGAS + 1, EMP_COBRADO = 0 WHERE EMP_COBRADO <> 0";
+        char * query3 = "UPDATE TAB_EMPRESTIMO SET EMP_COBRADO = 0 WHERE EMP_COBRADO <> 0";
         Linhas retorno1 = bd(query3);
     }
 
