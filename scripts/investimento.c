@@ -6,6 +6,7 @@
 #include "transferencia.h"
 #include <stdlib.h>
 
+// {"USU_ID":"1","INV_VALOR":"100","INV_TIPO":"CDB","INV_JUROS":"0.007"}
 char * investimento(char * post) {
     time_t agora;
     time(&agora);
@@ -55,6 +56,7 @@ char * investimento(char * post) {
     return "{\"mensagem\":\"aplicado\"}";
 }
 
+//
 char * removeInvestimento(char * post){
     time_t agora;
     time(&agora);
@@ -67,17 +69,17 @@ char * removeInvestimento(char * post){
     ListCampo post_data = convertObj(post);
 
     // Pega a lista de todos os investimentos ativos
-    char * query = "SELECT INV_VALOR, INV_ID FROM TAB_INVESTIMENTO WHERE USU_ID = ";
+    char * query = "SELECT INV_VALOR_ATUAL, INV_ID FROM TAB_INVESTIMENTO WHERE USU_ID = ";
     query = concatena(query,post_data.campos[0].valor);
     query = concatena(query," AND INV_TIPO = \'");
     query = concatena(query,post_data.campos[1].valor);
-    query = concatena(query," \' AND INV_DATA_FIM = \'\'");
+    query = concatena(query,"\' AND INV_DATA_FIM = \'\'");
     Linhas retorno = bd(query);
 
     double valor_retirado = strtod(post_data.campos[2].valor,NULL);
     for (int i = 0; i < retorno.tamanho; i++) {
         double valor = strtod(retorno.list_campos[i].campos[0].valor,NULL);
-        if(valor < valor_retirado){
+        if(valor <= valor_retirado){
             valor_retirado -= valor;
 
             //Atualiza o valor atual do investimento e encerra ele
@@ -103,11 +105,9 @@ char * removeInvestimento(char * post){
             char val[20];
             sprintf(val,"%.2f",valor);
 
-            char * query1 = "UPDATE TAB_INVESTIMENTO SET INV_DATA_FIM = \'";
-            query1 = concatena(query1,data);
-            query1 = concatena(query1," \', INV_VALOR_ATUAL = ");
+            char * query1 = "UPDATE TAB_INVESTIMENTO SET INV_VALOR_ATUAL = ";
             query1 = concatena(query1,val);
-            query1 = concatena(query1,"WHERE INV_ID = ");
+            query1 = concatena(query1," WHERE INV_ID = ");
             query1 = concatena(query1,retorno.list_campos[i].campos[1].valor);
             Linhas retorno1 = bd(query1);
             break;
@@ -137,16 +137,23 @@ char * atualizaInvestimentos(char * post){
     ListCampo post_data = convertObj(post);
 
     // Pega a lista de investimentos que serão atualizados
+    /*
     char * query = "SELECT INV_ID, ROUND(INV_VALOR_ATUAL*INV_JUROS,2) AS VALOR_NOVO FROM TAB_INVESTIMENTO WHERE USU_ID = ";
     query = concatena(query,post_data.campos[0].valor);
     query = concatena(query," AND INV_DIA = \'");
     query = concatena(query,post_data.campos[1].valor);
     query = concatena(query," \' AND INV_DATA_FIM = \'\' AND INV_HIS <> ");
     query = concatena(query,post_data.campos[1].valor);
+    */
+    char * query = "SELECT INV_ID, ROUND(INV_VALOR_ATUAL*INV_JUROS,2), INV_HIS AS VALOR_NOVO FROM TAB_INVESTIMENTO WHERE INV_DIA =  ";
+    query = concatena(query,post_data.campos[0].valor);
+    query = concatena(query," AND INV_DATA_FIM = \'\' AND INV_HIS <> ");
+    query = concatena(query,post_data.campos[0].valor);
     Linhas retorno = bd(query);
 
     for (int i = 0; i < retorno.tamanho; i++) {
         // Insere na tabela de historico a atualização do investimento
+
         char * query1 = "INSERT INTO TAB_HISTORICO_INVESTIMENTO (INV_ID,HIS_DATA,HIS_VALOR)VALUES(";
         query1 = concatena(query1,retorno.list_campos[i].campos[0].valor);
         query1 = concatena(query1,",\'");
@@ -157,14 +164,18 @@ char * atualizaInvestimentos(char * post){
         Linhas retorno1 = bd(query1);
 
         // Atualiza o investimento para garantir que não seja atualizado de forma incorreta
-        char * query2 = "UPDATE TAB_INVESTIMENTO SET INV_VALOR_ATUAL = '";
+        char * query2 = "UPDATE TAB_INVESTIMENTO SET INV_VALOR_ATUAL = INV_VALOR_ATUAL + ";
         query2 = concatena(query2,retorno.list_campos[i].campos[1].valor);
         query2 = concatena(query2,", INV_HIS = ");
-        query = concatena(query,post_data.campos[1].valor);
-        query2 = concatena(query2,"WHERE INV_ID = ");
-        query2 = concatena(query2,retorno.list_campos[i].campos[1].valor);
+        query2 = concatena(query2,post_data.campos[0].valor);
+        query2 = concatena(query2," WHERE INV_ID = ");
+        query2 = concatena(query2,retorno.list_campos[i].campos[0].valor);
         retorno1 = bd(query2);
     }
+
+    char * query3 = "UPDATE TAB_INVESTIMENTO SET INV_HIS = ";
+    query3 = concatena(query3,post_data.campos[0].valor);
+    Linhas retorno2 = bd(query3);
 
     return "{\"mensagem\":\"ok\"}";
 }
@@ -181,9 +192,9 @@ char * mostraGanhos(char * post){
     ListCampo post_data = convertObj(post);
 
     // Pega ganhos
-    char * query = "SELECT SUM(H.HIS_VALOR), SUBSTR(H.HIS_DATA,4,2) AS MES FROM TAB_HISTORICO_INVESTIMENTO H, TAB_INVESTIMENTO I WHERE H.INV_ID = I.INV_ID AND I.USU_ID = ";
+    char * query = "SELECT SUM(H.HIS_VALOR) AS VALOR, SUBSTR(H.HIS_DATA,4,2) AS MES FROM TAB_HISTORICO_INVESTIMENTO H, TAB_INVESTIMENTO I WHERE H.INV_ID = I.INV_ID AND I.USU_ID = ";
     query = concatena(query, post_data.campos[0].valor);
-    query = concatena(query, " AND SUBSTR(INV_DATA_FIM,7,4) = \'");
+    query = concatena(query, " AND SUBSTR(H.HIS_DATA,7,4) = \'");
     query = concatena(query, ano);
     query = concatena(query, "\' GROUP BY MES");
     Linhas retorno = bd(query);

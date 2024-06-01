@@ -14,25 +14,6 @@
 #include "../scripts/emprestimo.h"
 #include "../scripts/investimento.h"
 
-
-char * end_point_1(char * post){ // Não precisa estar nesse arquivo
-    //Exemplo
-    char * query = "SELECT * FROM TAB_USUARIO";
-    Linhas retorno = bd(query);
-
-    printf("%s - ",retorno.list_campos[0].campos[0].key);
-    printf("%s",retorno.list_campos[0].campos[0].valor);
-
-    char * json = convertJSON(retorno);
-
-    return json;
-}
-
-char * end_point_2(char * post){ // Não precisa estar nesse arquivo
-    //Exemplo
-    return "{\"status\":\"ok\"}";
-}
-
 /**
  * Função que recebe os dados da API e trata eles e os direciona para as devidas funções
  * @param url caminho para o qual deve ser enviado as informações do JSON
@@ -88,6 +69,12 @@ char * criaRotas(const char * url, char * post_data){
             page1 = adicionar_emprestimo(post_data);
         }else if (strcmp(url, "/lista_emprestimo") == 0) {
             page1 = lista_emprestimo(post_data);
+        }else if (strcmp(url, "/removeInvestimento") == 0) {
+            page1 = removeInvestimento(post_data);
+        }else if (strcmp(url, "/atualizaInvestimentos") == 0) {
+            page1 = atualizaInvestimentos(post_data);
+        }else if (strcmp(url, "/mostraGanhos") == 0) {
+            page1 = mostraGanhos(post_data);
         } else {
             page1 = "{\"erro\": \"caminho não encontrado\"}";
         }

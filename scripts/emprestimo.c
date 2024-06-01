@@ -50,25 +50,21 @@ char * adicionar_emprestimo(char * post)
 }
 
 
-char * lista_emprestimo(char * post)
-{
+char * lista_emprestimo(char * post) {
 
     ListCampo post_data = convertObj(post);
 
-    char * query = "SELECT * FROM TAB_USUARIO WHERE USU_ID =";
+    char *query = "SELECT * FROM TAB_USUARIO WHERE USU_ID =";
 
-    query  = concatena(query,post_data.campos[0].valor);
+    query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
-    if(retorno.tamanho > 0)
-    {
+    if (retorno.tamanho > 0) {
         char * retornoJson = convertJSON(retorno);
         return retornoJson;
+    } else {
+        return "{\"mensagem\":\"nao possui emprestimos\"}";
     }
-    else
-    {
-        return  "{\"mensagem\":\"nao possui emprestimos\"}";
-    }
-
+}
 
 
 
