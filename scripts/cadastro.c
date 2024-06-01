@@ -3,6 +3,27 @@
 #include <stdio.h>
 #include <string.h>
 
+
+/**
+ * Cadastra um novo usuario
+ * @param post é uma string no formato json com as seguintes informações:
+ * <ol>
+ *      <li>USU_EMAIL: email do usuario </li>
+ *      <li>USU_SENHA_ACESSO: senha hash do usuario</li>
+ *      <li>USU_CPF: cpf do usuario com mascara</li>
+ *      <li>USU_NOME: nome do usuario</li>
+ *      <li>USU_DATA_NASC: data de nascimento do usuario formato dd/mm/aaaa</li>
+ *      <li>USU_TELEFONE: telefone do usuario com mascara</li>
+ *      <li>USU_CEP: cep da residencia do usuario com mascara</li>
+ *      <li>USU_LOGRADOURO: logradouro da residencia do usuario</li>
+ *      <li>USU_NUM_ENDERECO: numero da residencia do usuario</li>
+ *      <li>USU_BAIRRO: bairro da residencia do usuario</li>
+ *      <li>USU_CIDADE: cidade da residencia do usuario</li>
+ *      <li>USU_UF: estado da residencia do usuario</li>
+ *      <li>USU_COMPLEMENTO: complemento se necessario para o endereço da residencia do usario</li>
+ * </ol>
+ * @return Uma mensagem json
+ */
 char * cadastro(char * post){
     ListCampo post_data = convertObj(post);
 

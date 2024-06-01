@@ -29,7 +29,14 @@ char * verifica_saldo(char * post) {
 
 }
 
-// Enviar historio para o front-end
+/**
+ * Pega a lista de contatos pix
+ * @param post é uma string no formato json com a seguinte informação:
+ * <ul>
+ *      <li>USU_ID: id do usuario</li>
+ * </ul>
+ * @return Um json com diversas linhas do banco de dados, cada um das linhas possui todas as informações de um contato da tabela TAB_CONTATOS_PIX
+ */
 char * list_historico_pix(char * post)
 {
 
@@ -53,7 +60,15 @@ char * list_historico_pix(char * post)
 
 }
 
-// Pegar a chave pix do front_end enviar para o banco de dados
+/**
+ * Adiciona uma chave pix nova para o usuario
+ * @param post é uma string no formato json com as seguintes informações:
+ * <ol>
+ *      <li>USU_ID:  id do usuario</li>
+ *      <li>CHA_CODIGO: chave pix que será cadastrada</li>
+ * </ol>
+ * @return Uma mensagem json
+ */
 char * adicionar_chave_pix(char * post)
 {
 
@@ -88,7 +103,20 @@ char * adicionar_chave_pix(char * post)
 
 }
 
-//consultar informaçoes do pix
+/**
+ * Pega a informações sobre um usuario com base na sua chave pix
+ * @param post é uma string no formato json com a seguinte informação:
+ * <ul>
+ *      <li>CHA_CODIGO: chave pix</li>
+ * </ul>
+ * @return Um json com as seguintes informações
+ * <ol>
+ *      <li>mensagem: mensagem informando se o usuario foi encontrado</li>
+ *      <li>USU_ID: id do usuario dono da chave pix</li>
+ *      <li>USU_NOME: nome do usuario dono da chave pix</li>
+ *      <li>USU_CPF: CPF do usuario dono da chave pix</li>
+ * </ol>
+ */
 char * consulta_info_pix(char * post)
 {
     ListCampo post_data = convertObj(post);
@@ -119,7 +147,15 @@ char * consulta_info_pix(char * post)
 }
 
 
-// id usurio / nome pix
+/**
+ * Adiciona uma chave pix aos contatos pix de um usuario
+ * @param post é uma string no formato json com as seguintes informações:
+ * <ol>
+ *      <li>USU_ID:  id do usuario</li>
+ *      <li>CHA_CODIGO: chave pix que será adicionada</li>
+ * </ol>
+ * @return Uma mensagem json
+ */
 char * adicionar_contato_pix(char * post)
 {
 
@@ -160,6 +196,14 @@ char * adicionar_contato_pix(char * post)
 
 }
 
+/**
+ * Pega a lista de chaves pix de um usuario
+ * @param post é uma string no formato json com a seguinte informação:
+ * <ul>
+ *      <li>USU_ID: id do usuario</li>
+ * </ul>
+ * @return Um json com diversas linhas do banco de dados, cada um das linhas possui todas as informações de um contato da tabela TAB_CHAVES_PIX
+ */
 char * lista_chave_pix(char * post)
 {
     ListCampo post_data = convertObj(post);

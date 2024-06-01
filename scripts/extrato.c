@@ -2,15 +2,25 @@
 #include "../controller/bd.h"
 
 #include <string.h>
+
+/**
+ * Pega informações necessarias para montagem do extrato
+ * @param post é uma string no formato json com a seguinte informação:
+ * <ul>
+ *      <li>USU_ID: id do usuario </li>
+ * </ul>
+ * @return Um json com diversas linhas do banco de dados, cada um das linhas possui as seguintes informações:
+ * <ol>
+ *      <li>TIPO: tipo da transação </li>
+ *      <li>DATA: data da transação </li>
+ *      <li>VALOR: valor da transação (positivo quando o usuario recebeu e negativo quando o usuario enviou) </li>
+ *      <li>NOME: nome do usuario que participou da transação junto com usuario que teve seu id fornecido</li>
+ * </ol>
+ */
 char * extrato (char * post)
 {
     ListCampo post_data = convertObj(post);
-    /*
-    char * query = "SELECT * FROM TAB_TRANSACOES WHERE USU_ID_ORIGEM=";
-    query = concatena(query,post_data.campos[0].valor);
-    query = concatena(query, " OR USU_ID_DESTINO = ");
-    query = concatena(query,post_data.campos[0].valor);
-    */
+
     char * query = "SELECT "
                    "T.TRAN_ID,"
                    "T.USU_ID_ORIGEM,"

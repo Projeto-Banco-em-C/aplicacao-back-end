@@ -4,6 +4,22 @@
 #include <time.h>
 #include <stdio.h>
 
+
+/**
+ * Pega a informações sobre um usuario com base nos dados da conta
+ * @param post é uma string no formato json com a seguinte informação:
+ * <ol>
+ *      <li>USU_NUM_CONTA: numero da conta</li>
+ *      <li>USU_NUM_AGENCIA: numero da agencia</li>
+ * </ol>
+ * @return Um json com as seguintes informações
+ * <ol>
+ *      <li>mensagem: mensagem informando se o usuario foi encontrado</li>
+ *      <li>USU_ID: id do usuario dono dos dados da conta</li>
+ *      <li>USU_NOME: nome do usuario dono dos dados da conta</li>
+ *      <li>USU_CPF: CPF do usuario dono dos dados da conta</li>
+ * </ol>
+ */
 char * consulta_info_conta(char * post){
 
     ListCampo post_data = convertObj(post);
