@@ -22,10 +22,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90434fcd-bbab-486c-9009-4110e648b2d0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/rotas.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/rotas.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/emprestimo.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/emprestimo.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/investimento.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/investimento.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/investimento.h" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/investimento.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +105,7 @@
       <workItem from="1717199325627" duration="11403000" />
       <workItem from="1717255210483" duration="621000" />
       <workItem from="1717267722279" duration="812000" />
-      <workItem from="1717271248919" duration="94000" />
+      <workItem from="1717271248919" duration="471000" />
     </task>
     <servers />
   </component>

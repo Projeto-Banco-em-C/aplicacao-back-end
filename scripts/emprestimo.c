@@ -54,7 +54,7 @@ char * lista_emprestimo(char * post) {
 
     ListCampo post_data = convertObj(post);
 
-    char *query = "SELECT * FROM TAB_USUARIO WHERE USU_ID =";
+    char *query = "SELECT * FROM TAB_EMPRESTIMO WHERE USU_ID =";
 
     query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
