@@ -97,7 +97,7 @@ char * atualiza_emprestimo(char * post){
     ListCampo post_data = convertObj(post);
 
     // Atualiza todos que tem saldo negativo
-    char * query = "SELECT  ROUND(USU_SALDO*0.0027,2) AS VALOR, USU_ID FROM TAB_USUARIO WHERE USU_SALDO < 0 AND USU_COBRADO <>";
+    char * query = "SELECT ROUND(USU_SALDO*0.0027,2)*(-1) AS VALOR, USU_ID FROM TAB_USUARIO WHERE USU_SALDO < 0 AND USU_COBRADO <>";
     query = concatena(query,post_data.campos[0].valor);
 
     Linhas retorno = bd(query);

@@ -159,7 +159,7 @@ char * atualizaInvestimentos(char * post){
     ListCampo post_data = convertObj(post);
 
     // Pega a lista de investimentos que serão atualizados no dia atual
-    char * query = "SELECT INV_ID, ROUND(INV_VALOR_ATUAL*INV_JUROS,2), INV_HIS AS VALOR_NOVO FROM TAB_INVESTIMENTO WHERE INV_DIA =  ";
+    char * query = "SELECT INV_ID, ROUND(INV_VALOR_ATUAL*INV_JUROS/100,2), INV_HIS AS VALOR_NOVO FROM TAB_INVESTIMENTO WHERE INV_DIA =  ";
     query = concatena(query,post_data.campos[0].valor);
     query = concatena(query," AND INV_DATA_FIM = \'\' AND INV_HIS <> ");
     query = concatena(query,post_data.campos[0].valor);
