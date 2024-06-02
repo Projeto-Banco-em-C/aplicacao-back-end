@@ -237,22 +237,28 @@ char * mostraGanhos(char * post){
  *      <li>USU_ID: id do usuario que se deja obter os ganhos</li>
  *      <li>INV_TIPO: tipo do investimento</li>
  * </ul>
- * @return Um json com a seguinte informação:
- * <ol>
- * </ol>
+ * @return Um json com as seguintes informações:
+ * <ul>
+ *      <li>USU_ID: id do usuario </li>
+ *      <li>VALOR: valor disponivel para saque </li>
+ * </ul>
  */
 char * mostrarInvestimento(char * post)
 {
     ListCampo post_data = convertObj(post);
 
     // Pega todas as informações sobre todos os investimentos com base no id do usuario
-    char * query = "SELECT USU_ID, SUM(INV_VALOR_ATUAL) AS VALOR_TOTAL FROM TAB_INVESTIMENTO WHERE USU_ID = ";
+    char * query = "SELECT USU_ID, SUM(INV_VALOR_ATUAL) AS VALOR FROM TAB_INVESTIMENTO WHERE USU_ID = ";
     query = concatena(query, post_data.campos[0].valor);
     query = concatena(query, " AND INV_TIPO = \'");
     query = concatena(query, post_data.campos[1].valor);
     query = concatena(query, "\' AND INV_DATA_FIM = \'\' GROUP BY USU_ID");
     Linhas retorno = bd(query);
 
-    char * retornoJson = convertJSON(retorno);
-    return retornoJson;
+    if(retorno.tamanho > 0) {
+        char *retornoJson = convertJSON(retorno);
+        return retornoJson;
+    }else{
+        return "{\"mensagem\":\"erro\"}";
+    }
 }

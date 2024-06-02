@@ -23,8 +23,7 @@
     <list default="true" id="90434fcd-bbab-486c-9009-4110e648b2d0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BancoDeDados.db" beforeDir="false" afterPath="$PROJECT_DIR$/BancoDeDados.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/rotas.c" beforeDir="false" afterPath="$PROJECT_DIR$/controller/rotas.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/pix.h" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pix.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/investimento.c" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/investimento.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +108,7 @@
       <workItem from="1717267722279" duration="812000" />
       <workItem from="1717271248919" duration="3734000" />
       <workItem from="1717284963986" duration="11693000" />
-      <workItem from="1717334058280" duration="9014000" />
+      <workItem from="1717334058280" duration="10853000" />
     </task>
     <servers />
   </component>
