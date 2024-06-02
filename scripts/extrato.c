@@ -1,6 +1,5 @@
 #include "extrato.h"
 #include "../controller/bd.h"
-
 #include <string.h>
 
 /**
@@ -21,6 +20,7 @@ char * extrato (char * post)
 {
     ListCampo post_data = convertObj(post);
 
+    // Seleciona dados relevantes para o extrato
     char * query = "SELECT "
                    "T.TRAN_ID,"
                    "T.USU_ID_ORIGEM,"
@@ -41,22 +41,24 @@ char * extrato (char * post)
     query = concatena(query,post_data.campos[0].valor);
     query = concatena(query,") AND U1.USU_ID = T.USU_ID_ORIGEM AND U2.USU_ID = T.USU_ID_DESTINO");
     Linhas retorno = bd(query);
+
     if(retorno.tamanho > 0){
+        // Constroi json
         char * json = "[";
-        for (int i = 0; i< retorno.tamanho;i++)
+        for (int i = 0; i< retorno.tamanho;i++) // Loop para construir as linhas do extrato no json
         {
             json = concatena (json,"{\"TIPO\":\"");
             json = concatena(json,retorno.list_campos[i].campos[5].valor);
             json = concatena(json,"\",\"DATA\":\"");
             json = concatena(json,retorno.list_campos[i].campos[4].valor);
             json = concatena(json,"\",\"VALOR\":\"");
-            if(strcmp(post_data.campos[0].valor,retorno.list_campos[i].campos[1].valor) == 0) // Se o id for igual ao id de origem
+            if(strcmp(post_data.campos[0].valor,retorno.list_campos[i].campos[1].valor) == 0) // Se o id for igual ao id de origem então se trata de um valor enviado, portanto negativo
             {
                 json = concatena(json,"-");
                 json = concatena(json,retorno.list_campos[i].campos[3].valor);
                 json = concatena(json,"\",\"NOME\":\"");
                 json = concatena(json,retorno.list_campos[i].campos[7].valor);
-            }else{
+            }else{ // Caso o id seja diferente do id de origem então o valor foi recebido, portanto o valor é positivo
                 json = concatena(json,retorno.list_campos[i].campos[3].valor);
                 json = concatena(json,"\",\"NOME\":\"");
                 json = concatena(json,retorno.list_campos[i].campos[6].valor);

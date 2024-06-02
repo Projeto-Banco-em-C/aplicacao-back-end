@@ -5,30 +5,6 @@
 #include <time.h>
 #include <string.h>
 
-// verificar se a salto o sufuciente antes de proceguir
-char * verifica_saldo(char * post) {
-
-    ListCampo post_data = convertObj(post);
-
-    char * query = "SELECT USU_SALDO FROM TAB_USUARIO WHERE USU_ID = ";
-    query = concatena(query, post_data.campos[0].valor);
-    Linhas retorno = bd(query);
-    double saldo = strtod(retorno.list_campos[0].campos[0].valor, NULL);
-    double valor = strtod(post_data.campos[1].valor, NULL);
-
-
-
-    if (saldo >= valor){
-
-        return "{\"mensagem\":\"ok\"}";
-
-
-    }else{
-        return "{\"mensagem\":\"saldo insuficiente\"}";
-    }
-
-}
-
 /**
  * Pega a lista de contatos pix
  * @param post é uma string no formato json com a seguinte informação:
@@ -42,6 +18,7 @@ char * list_historico_pix(char * post)
 
     ListCampo post_data = convertObj(post);
 
+    // Seleciona os contatos pix com base no id do usuario
     char * query = "SELECT * FROM TAB_CONTATOS_PIX WHERE USU_ID = ";
     query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);
@@ -74,6 +51,7 @@ char * adicionar_chave_pix(char * post)
 
     ListCampo post_data = convertObj(post);
 
+    // Verifica se a chave pix que está sendo cadastrada já não está cadastrada
     char * query = "SELECT * FROM TAB_CHAVES_PIX WHERE CHA_CODIGO = \'";
     query = concatena(query, post_data.campos[1].valor);
     query = concatena(query, "\'");
@@ -85,9 +63,9 @@ char * adicionar_chave_pix(char * post)
         return "{\"mensagem\":\"pix ja existente\"}";
 
     }
-    else
+    else // No caso da chave pix não estar cadastrada ainda
     {
-
+        // Insere a chave pix na tabela de chaves
         char * query02 = "INSERT INTO TAB_CHAVES_PIX VALUES (";
         query02 = concatena(query02, post_data.campos[0].valor);
         query02 = concatena(query02, ",");
@@ -121,6 +99,7 @@ char * consulta_info_pix(char * post)
 {
     ListCampo post_data = convertObj(post);
 
+    // Pega os dados do usuario com base na sua chave pix
     char * query = "SELECT U.USU_ID, U.USU_NOME, U.USU_CPF FROM TAB_CHAVES_PIX C,TAB_USUARIO U WHERE U.USU_ID = C.USU_ID AND C.CHA_CODIGO = \'";
     query = concatena(query, post_data.campos[0].valor);
     query = concatena(query,"\'");
@@ -128,6 +107,7 @@ char * consulta_info_pix(char * post)
 
     if(retorno.tamanho > 0)
     {
+        // Constroi json de retorno com os dados do usuario
         char * json = "{\"mensagem\":\"ok\",\"USU_ID\":\"";
         json = concatena(json, retorno.list_campos[0].campos[0].valor);
         json = concatena(json, "\",\"USU_NOME\":\"");
@@ -161,6 +141,7 @@ char * adicionar_contato_pix(char * post)
 
     ListCampo post_data = convertObj(post);
 
+    // Pega os contatos pix de um usuario para verificar se essa chave já não está nos contatos desse usuario
     char * query = "SELECT * FROM TAB_CONTATOS_PIX WHERE CON_CHAVE = \'";
     query = concatena(query, post_data.campos[1].valor);
     query = concatena(query, "\' AND USU_ID = ");
@@ -170,13 +151,14 @@ char * adicionar_contato_pix(char * post)
     if(retorno.tamanho > 0){
         return "{\"mensagem\":\"contato já existente\"}";
     }else {
-
+        // Pega o id do usuario com base na chave pix dele para verificar se a chave não é do proprio usuario do que está cadastrando
         char * query1 = "SELECT USU_ID FROM TAB_CHAVES_PIX WHERE CHA_CODIGO = \'";
         query1 = concatena(query1, post_data.campos[1].valor);
         query1 = concatena(query1, "\'");
         retorno = bd(query1);
 
         if(strcmp(retorno.list_campos[0].campos[0].valor,post_data.campos[0].valor) != 0) {
+            // Insere os dados do contato na tabela de contatos pix
             char *query2 = "INSERT INTO TAB_CONTATOS_PIX (USU_ID, CON_CHAVE, CON_NOME) VALUES (";
             query2 = concatena(query2, post_data.campos[0].valor);
             query2 = concatena(query2, ",\'");
@@ -184,7 +166,6 @@ char * adicionar_contato_pix(char * post)
             query2 = concatena(query2, "\',\'");
             query2 = concatena(query2, post_data.campos[2].valor);
             query2 = concatena(query2, "\')");
-
             retorno = bd(query2);
 
             return "{\"mensagem\":\"contato cadastrado\"}";
@@ -208,6 +189,7 @@ char * lista_chave_pix(char * post)
 {
     ListCampo post_data = convertObj(post);
 
+    // Pega todas as chaves pix do usuario
     char * query = "SELECT * FROM TAB_CHAVES_PIX WHERE USU_ID = ";
     query = concatena(query, post_data.campos[0].valor);
     Linhas retorno = bd(query);

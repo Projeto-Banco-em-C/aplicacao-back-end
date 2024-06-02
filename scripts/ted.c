@@ -24,6 +24,7 @@ char * consulta_info_conta(char * post){
 
     ListCampo post_data = convertObj(post);
 
+    // Pega dados do usuario com base nos dados da conta
     char * query = "SELECT USU_ID, USU_NOME, USU_CPF FROM TAB_USUARIO WHERE USU_NUM_CONTA = \'";
     query = concatena(query, post_data.campos[0].valor);
     query = concatena(query, "\' AND USU_NUM_AGENCIA = \'");
@@ -33,6 +34,7 @@ char * consulta_info_conta(char * post){
     Linhas retorno = bd(query);
 
     if (retorno.tamanho > 0){
+        // Constroi o json de retorno com as informações sobre o usuario
         char * json = "{\"mensagem\":\"ok\",\"USU_ID\":\"";
         json = concatena(json,retorno.list_campos[0].campos[0].valor);
         json = concatena(json,"\",\"USU_NOME\":\"");

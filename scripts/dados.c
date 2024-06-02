@@ -14,6 +14,7 @@
 char * dados(char * post){
     ListCampo post_data = convertObj( post);
 
+    // Seleciona os todos os dados do usuario com base no id
     char * query = "SELECT * FROM TAB_USUARIO WHERE USU_ID = \'";
 
     query = concatena(query, post_data.campos[0].valor );

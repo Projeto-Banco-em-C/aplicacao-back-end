@@ -13,6 +13,7 @@
 char * validacaoCpf(char * post){
     ListCampo post_data = convertObj(post);
 
+    // Pega o usuario pelo CPF para ver se ele existe
     char * query = "SELECT * FROM TAB_USUARIO WHERE USU_CPF = \'";
     query = concatena(query, post_data.campos[0].valor);
     query = concatena(query, "\'");

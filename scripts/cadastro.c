@@ -27,7 +27,7 @@
 char * cadastro(char * post){
     ListCampo post_data = convertObj(post);
 
-    //Insere no banco os dados do usuario
+    // Insere no banco os dados do usuario
     char * query = "INSERT INTO TAB_USUARIO( ";
     for (int i = 0; i < post_data.tamanho; i++) // Loop para pegar todos os nomes das colunas recebidos no json
     {
@@ -52,9 +52,9 @@ char * cadastro(char * post){
     query = concatena(query, ")");
     Linhas retorno = bd(query);
 
-    //Seleciona o usuario pelo cpf para colocar o numero da conta
+    // Seleciona o usuario pelo cpf para colocar o numero da conta
     char * query2 = "SELECT USU_ID FROM TAB_USUARIO WHERE USU_CPF = \'";
-    for (int i = 0; i < post_data.tamanho; i++)
+    for (int i = 0; i < post_data.tamanho; i++) // Loop para pegar o campo cpf, sem precisar saber a posiçãoe especifica dele no post_data
     {
         if (strcmp(post_data.campos [i].key,"USU_CPF") == 0 )
         {
@@ -68,11 +68,12 @@ char * cadastro(char * post){
     char * numConta = retorno2.list_campos[0].campos[0].valor;
     numConta = concatena(numConta, "\0");
     int tamanho = strlen(numConta);
-    for (int i = tamanho; i < 5; i++ )
+    for (int i = tamanho; i < 5; i++ ) // Loop para preencher zeros antes do numero da conta
     {
         numConta = concatena("0", numConta);
     }
-    //atualiza os dados do banco com os numeros da conta
+
+    // Atualiza os dados do banco com os numeros da conta
     char * query3 = "UPDATE TAB_USUARIO SET USU_NUM_CONTA = \'";
     query3 = concatena(query3, numConta);
     query3 = concatena(query3, "\' WHERE USU_ID = \'");
@@ -80,7 +81,5 @@ char * cadastro(char * post){
     query3 = concatena(query3,"\'");
     Linhas retorno3 = bd(query3);
     return "{\"mensagem\":\"ok\"}";
-
-
-
+    
 }
