@@ -75,8 +75,8 @@ char * investimento(char * post) {
  * @param post é uma string no formato json com as seguintes informações:
  * <ol>
  *      <li>USU_ID: id do usuario </li>
- *      <li>INV_VALOR: valor investido </li>
  *      <li>INV_TIPO: tipo do investimento </li>
+ *      <li>INV_VALOR: valor investido </li>
  * </ol>
  * @return Uma mensagem json
  */
