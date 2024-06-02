@@ -52,8 +52,6 @@ char * criaRotas(const char * url, char * post_data){
             page1 = consulta_info_conta(post_data);
         } else if (strcmp(url, "/transferir") == 0) {
             page1 = transferir(post_data);
-        } else if (strcmp(url, "/verifica_saldo") == 0) {
-            page1 = verifica_saldo(post_data);
         } else if (strcmp(url, "/consulta_info_pix") == 0) {
             page1 = consulta_info_pix(post_data);
         } else if (strcmp(url, "/list_historico_pix") == 0) {
