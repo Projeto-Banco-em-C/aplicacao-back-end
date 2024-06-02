@@ -39,7 +39,7 @@ char * extrato (char * post)
     query = concatena(query,post_data.campos[0].valor);
     query = concatena(query," OR USU_ID_DESTINO = ");
     query = concatena(query,post_data.campos[0].valor);
-    query = concatena(query,") AND U1.USU_ID = T.USU_ID_ORIGEM AND U2.USU_ID = T.USU_ID_DESTINO ORDER BY TRAN_ID");
+    query = concatena(query,") AND U1.USU_ID = T.USU_ID_ORIGEM AND U2.USU_ID = T.USU_ID_DESTINO ORDER BY TRAN_ID DESC");
     Linhas retorno = bd(query);
 
     if(retorno.tamanho > 0){
