@@ -85,10 +85,10 @@ char * atualiza_emprestimo(char * post){
     Linhas retorno = bd(query);
     for (int i = 0; i < retorno.tamanho; i++) {
         char * json = "{USU_ID:";
-        json = concatena(json,retorno.list_campos[i].campos[0].valor);
-        json = concatena(json,",USU_ID:1,VALOR:");
         json = concatena(json,retorno.list_campos[i].campos[1].valor);
-        json = concatena(json,",TIPO:EMPRESTIMO}");
+        json = concatena(json,",USU_ID:1,VALOR:");
+        json = concatena(json,retorno.list_campos[i].campos[0].valor);
+        json = concatena(json,",TIPO:JUROS}");
         char * retornoJson = transferir(json);
     }
 

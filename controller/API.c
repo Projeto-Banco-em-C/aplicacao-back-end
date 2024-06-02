@@ -55,12 +55,12 @@ static enum MHD_Result ahc_echo(void * cls,
             *upload_data_size = 0;
             return MHD_YES;
         } else {
-            if(strcmp(method, "POST") == 0){
+            if(strcmp(method, "POST") == 0){ // Verifica se o metodo é post
                 page1 = criaRotas(url, post->buff);
             } else {
                 page1 = "{\"erro\": \"caminho não encontrado\"}";
             }
-            //free(post->buff);
+
         }
     }
 
@@ -93,6 +93,7 @@ static enum MHD_Result ahc_echo(void * cls,
 void servidor(){
     struct MHD_Daemon * d;
 
+    //Inicializa o servidor
     d = MHD_start_daemon(MHD_USE_SELECT_INTERNALLY,
                          9000,
                          NULL,
@@ -106,5 +107,5 @@ void servidor(){
         return;
     getchar();
 
-    MHD_stop_daemon(d);
+    MHD_stop_daemon(d); // Encerra o servidor
 }

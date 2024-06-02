@@ -18,7 +18,7 @@
  * Função que recebe os dados da API e trata eles e os direciona para as devidas funções
  * @param url caminho para o qual deve ser enviado as informações do JSON
  * @param post_data JSON com as informações que devem ser enviadas para a devida função
- * @return
+ * @return Retorna um json que será enviado como resposta da requisição da API
  */
 char * criaRotas(const char * url, char * post_data){
     char * page1;
@@ -32,8 +32,9 @@ char * criaRotas(const char * url, char * post_data){
         post_data[i+1] = '\0'; // Adiciona o caracter de fimd e string no JSON
 
         removeChar(post_data,'\"'); // Remove as aspas
-        //post = convertObj(post_data); // converte o JSON para ListCampos
-        if (strcmp(url, "/login") == 0) { // Cada end point tem um if
+
+        // If para definir a rota que foi recebida e a função que deve ser chamada
+        if (strcmp(url, "/login") == 0) {
             page1 = login(post_data);
         } else if (strcmp(url, "/cadastro") == 0) {
             page1 = cadastro(post_data);

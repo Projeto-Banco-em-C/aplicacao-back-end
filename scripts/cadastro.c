@@ -27,9 +27,9 @@
 char * cadastro(char * post){
     ListCampo post_data = convertObj(post);
 
-    //INSERIR DADOS NO BANCO
+    //Insere no banco os dados do usuario
     char * query = "INSERT INTO TAB_USUARIO( ";
-    for (int i = 0; i < post_data.tamanho; i++)
+    for (int i = 0; i < post_data.tamanho; i++) // Loop para pegar todos os nomes das colunas recebidos no json
     {
         query = concatena(query,post_data.campos[i].key);
         if (i != post_data.tamanho - 1)
@@ -39,7 +39,7 @@ char * cadastro(char * post){
     }
     query = concatena(query,") VALUES (");
 
-    for (int i = 0; i < post_data.tamanho; i++)
+    for (int i = 0; i < post_data.tamanho; i++) // Loop para pegar todos os valores recebidos no json
     {
         query = concatena(query,"\'");
         query = concatena(query,post_data.campos[i].valor);
@@ -52,7 +52,7 @@ char * cadastro(char * post){
     query = concatena(query, ")");
     Linhas retorno = bd(query);
 
-    //seleciona a linha pelo cpf para colocar o numero da conta
+    //Seleciona o usuario pelo cpf para colocar o numero da conta
     char * query2 = "SELECT USU_ID FROM TAB_USUARIO WHERE USU_CPF = \'";
     for (int i = 0; i < post_data.tamanho; i++)
     {

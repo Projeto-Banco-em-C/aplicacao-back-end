@@ -14,7 +14,7 @@ void removeChar(char *str, char charToRemove) {
     char *src = str; // Ponteiro para percorrer a string
     char *dst = str; // Ponteiro para onde os caracteres devem ser movidos
 
-    while (*src) {
+    while (*src) { // Loop para ler a string completa
         if (*src != charToRemove) {
             *dst = *src;
             dst++;
@@ -58,14 +58,16 @@ char * concatena(char *str1, char *str2) {
  */
 char * convertJSON(Linhas linhas_json){
     char * json;
-    if(linhas_json.tamanho == 1){
+
+    if(linhas_json.tamanho == 1){ // Verifica se é um json de uma linhas
         json = "";
     }else{
         json = "[";
     }
-    for (int i = 0; i < linhas_json.tamanho; i++) {
+
+    for (int i = 0; i < linhas_json.tamanho; i++) { //Loop para contruir as linhas do json
         json = concatena(json,"{\"");
-        for (int j = 0; j < linhas_json.list_campos[i].tamanho; j++) {
+        for (int j = 0; j < linhas_json.list_campos[i].tamanho; j++) { //Loop para contruir os campos do json de cada linha
             json = concatena(json,linhas_json.list_campos[i].campos[j].key);
             json = concatena(json,"\" : \"");
             json = concatena(json,linhas_json.list_campos[i].campos[j].valor);
@@ -87,21 +89,15 @@ char * convertJSON(Linhas linhas_json){
 }
 
 /**
- * <h3>Descrição:</h3>
- * Função responsavel por trasformar um arquivo Json em uma struct.
- * A função retorna o ponteiro para o primeiro campo da struct para ver a struct inteira é necessário uso de um loop.
- * <h3>Comandos:</h3>
- * <ul>
- *      <li><b>list_campos.tamanho</b> : comando para pegar o tamanho da struct</li>
- *      <li><b>listaCampos.campos[i].key</b> : comando para pegar a chave da struct como exemplo {Nome: pedro} ele retorna o valor "Nome"</li>
- *      <li><b>listaCampos.campos[i].valor</b> : comando para pegar o valor da struct como exemplo {Nome: pedro} ele retorna o valor "pedro"</li>
- * </ul>
+ *  * Função responsavel por trasformar uma string no formato json em uma struct ListCampos.
+ * @param obj Uma string no formato json
+ * @return Retorna uma struct ListCampo com os campos do json.
  */
 ListCampo convertObj(char *obj) {
     ListCampo list_campos;
 
     list_campos.tamanho = 0;
-    list_campos.campos = (Campo *)malloc(list_campos.tamanho*sizeof(Campo));
+    list_campos.campos = (Campo *)malloc(list_campos.tamanho*sizeof(Campo)); // Inicializa os campos da ListCampo
     if (list_campos.campos == NULL) {
         printf("Erro ao alocar memória.\n");
         exit(1);
