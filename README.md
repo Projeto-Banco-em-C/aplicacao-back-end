@@ -1,4 +1,4 @@
-# Aplicação Penguin Bank Front-End
+# Aplicação Penguin Bank Back-End
  <div align="center">
     <br>
     <img src="./imgs/pinguim_pequeno02.png" width="300px" height="300px">
