@@ -1,21 +1,21 @@
 # Aplicação Penguin Bank Front-End
  <div align="center">
     <br>
-    <img src="./img/pinguim_pequeno02.png" width="300px" height="300px">
+    <img src="./imgs/pinguim_pequeno02.png" width="300px" height="300px">
     <br>
      <h2>Penguin Bank é um banco digital <i>Web</i> onde você terá diversos benefícios desde conta gratuita, empréstimos, transações, investimentos e muito mais. Venha ser um <b>Pinguim</b>.</h2>
     <br>
     <br>
-    <img src="./img/gifmaislento.gif">
+    <img src="./imgs/gifmaislento.gif">
     <br>
     <br>
-    <img src="./img/img1.png">
+    <img src="./imgs/img1.png">
     <br>
     <br>
-    <img src="./img/img2.png">
+    <img src="./imgs/img2.png">
     <br>
     <br>
-    <img src="./img/img3.png">
+    <img src="./imgs/img3.png">
 </div>
 <br>
 <p align="justify">
