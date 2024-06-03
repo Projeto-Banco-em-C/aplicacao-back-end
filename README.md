@@ -30,7 +30,7 @@
   <br>
   <br>
   Já na criação do Back End de início teve grande complicação de como 
-  usar uma API(Interface de Programação de Aplicação) a qual deriva se responsável por realizar a ponde de comunicação entra os dois lados da aplicação, pois a linguem C não tem ferramentas necessárias passar essa criação, 
+  usar uma API(Interface de Programação de Aplicação) a qual deriva se responsável por realizar a ponte de comunicação entra os dois lados da aplicação, pois a linguagem C não tem ferramentas necessárias passar essa criação, 
   assim necessitando utilizar diversas bibliotecas para realizar parte. Igualmente necessária para a conexão com o Banco de dados o qual também necessitou de bibliotecas externas para realizar a conexão, o SQLite que foi 
   escolhido por ser um banco, digamos, portável onde não requer um aplicativo para ele rodar. Por fim no repositório desta organização no GitHub está dividido em dois o Front End. e o Back End. 
 </p>
