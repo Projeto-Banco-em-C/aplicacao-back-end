@@ -56,7 +56,7 @@
     git clone https://github.com/Projeto-Banco-em-C/aplicacao-back-end.git
 
 
-Após isso abra o arquivo abaixado, para isso precisara ter o progama `CLion` ou outro software para que tenha um compilador da linguagem C, apois isso abra o arquivo e execute! Devido a utilizadação da comunicação com uma API deverar ser preciso deligar proteções contra vírus(AntVírus).
+Abra a pasta com o progama `CLion` ou outro software para que tenha um compilador da linguagem C, e após, abra o arquivo e execute/compile! Devido a utilização da comunicação com uma API será necessário desligar proteções contra vírus(AntiVírus).
 <br>
 <br>
 
