@@ -25,20 +25,20 @@
   <br>
   <br>
   Por escolha do grupo optamos em aceitar um desafio maior com base no conhecimentos de cada integrante do grupo e desenvolvemos uma interface Web, o 
-  Front End da aplicação no qual foi criado com as linguem de marcação HTML, CSS e a a linguagem de programação Javascript utilizando sua biblioteca JQuery, O grupo optou por não utilizar um framework 
-  como React  por facilidade de execução do projeto em qualquer maquinha, já que o grupo não irar hospedar o sistema completo na Web.
+  Front End da aplicação no qual foi criado com as linguagens de marcação HTML, CSS e a a linguagem de programação Javascript utilizando sua biblioteca JQuery, O grupo optou por não utilizar um framework 
+  como React  por facilidade de execução do projeto em qualquer máquina, já que o grupo não irá hospedar o sistema completo na Web.
   <br>
   <br>
   Já na criação do Back End de início teve grande complicação de como 
-  usar uma API(Interface de Programação de Aplicação) a qual deriva se responsável por realizar a ponde de comunicação entra os dois lados da aplicação, pôs a linguem C não tem ferramentas necessárias passar essa criação, 
-  assim necessitando utilizar diversas bibliotecas para realizar parte. Igual mente necessária para a conexão com o Banco de dados o qual também necessitou de bibliotecas externas para realizar a conexão, o SQLite que foi 
-  escolhido por ser um banco digamos portável onde não requer um aplicativo para ele rodar. Por fim no repositório desta organização no GitHub está dividido em dois o Front End. e o Back End. 
+  usar uma API(Interface de Programação de Aplicação) a qual deriva se responsável por realizar a ponde de comunicação entra os dois lados da aplicação, pois a linguem C não tem ferramentas necessárias passar essa criação, 
+  assim necessitando utilizar diversas bibliotecas para realizar parte. Igualmente necessária para a conexão com o Banco de dados o qual também necessitou de bibliotecas externas para realizar a conexão, o SQLite que foi 
+  escolhido por ser um banco, digamos, portável onde não requer um aplicativo para ele rodar. Por fim no repositório desta organização no GitHub está dividido em dois o Front End. e o Back End. 
 </p>
 
 # Detalhes do Back End
 <p>
- Como dito anteriormente o Back-End foi desenvolvido utilizando a linguagem de programação C e SQL, O C foi utilizado por montar toda a logica do projeto desde comunicação com a API, os   
- tratamentos de rotas, envio de requisições para o banco de dados, temos as rotas de, PIX, TED, Pagamento, Investimento, Empréstimo, Cadastro, Login, Extrato entre outras. O SQLite para armazenar 
+ Como dito anteriormente o Back-End foi desenvolvido utilizando a linguagem de programação C e SQL. O C foi utilizado por montar toda a lógica do projeto desde comunicação com a API, os   
+ tratamentos de rotas, envio de requisições para o banco de dados.Temos as rotas de, PIX, TED, Pagamento, Investimento, Empréstimo, Cadastro, Login, Extrato entre outras. O SQLite para armazenar 
  todos os dados da aplicação. Abaixo um exemplo de como é feita uma rota:        
 </p>
  <br>
@@ -56,7 +56,7 @@
     git clone https://github.com/Projeto-Banco-em-C/aplicacao-back-end.git
 
 
-Apos isso abra o arquivo abaixado, para isso precisara ter o progama `CLion` ou outro software para que tenha um compilador da linguagem C, apois isso abra o arquivo e execute! Devido a utilizadação da comunicação com uma API deverar ser preciso deligar proteções contra virus(AntVirus).
+Após isso abra o arquivo abaixado, para isso precisara ter o progama `CLion` ou outro software para que tenha um compilador da linguagem C, apois isso abra o arquivo e execute! Devido a utilizadação da comunicação com uma API deverar ser preciso deligar proteções contra vírus(AntVírus).
 <br>
 <br>
 
