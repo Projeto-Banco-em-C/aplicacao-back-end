@@ -36,8 +36,16 @@
 </p>
 
 # Detalhes do Back End
-
-
+<p>
+ Como dito anteriormente o Back-End foi desenvolvido utilizando a linguagem de programação C e SQL, O C foi utilizado por montar toda a logica do projeto desde comunicação com a API, os   
+ tratamentos de rotas, envio de requisições para o banco de dados, temos as rotas de, PIX, TED, Pagamento, Investimento, Empréstimo, Cadastro, Login, Extrato entre outras. O SQLite para armazenar 
+ todos os dados da aplicação. Abaixo um exemplo de como é feita uma rota:        
+</p>
+ <br>
+ <br>
+ <img src="./imgs/img2.png">
+<br>
+<br>
 
 # Como Instalar?
 
@@ -45,10 +53,10 @@
   Para instalar a aplicação use o código no seu CMD(Prompt de Comando):
 </p>
 
-    git clone https://github.com/Projeto-Banco-em-C/aplicacao-front-end.git
+    git clone https://github.com/Projeto-Banco-em-C/aplicacao-back-end.git
 
 
-Apos isso é dentro da pasta abra o arquivo `index.html` isso com o servidor Back End rodando! o qual o passo a passo de como rodar está esplicado  <a href="https://github.com/eduardofranco572">aqui</a>
+Apos isso abra o arquivo abaixado, para isso precisara ter o progama `CLion` ou outro software para que tenha um compilador da linguagem C, apois isso abra o arquivo e execute! Devido a utilizadação da comunicação com uma API deverar ser preciso deligar proteções contra virus(AntVirus).
 <br>
 <br>
 
